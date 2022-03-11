@@ -9,9 +9,8 @@ Travail réalisé par : **Cuche Héloïse & Jasmine Molano**
 **Contexte** : [la Meteoritical Society](https://meteoritical.org/) collecte des données sur les météorites tombées sur Terre depuis l'espace. Cet ensemble de données comprend l'emplacement, la masse, la composition et l'année de chute de plus de 45 000 météorites qui ont frappé notre planète.
 
 **Description** : 
-::: tip Name
-le nom de la météorite (généralement un emplacement, souvent modifié par un numéro, une année, une composition, etc.)
-:::
+* Name : le nom de la météorite (généralement un emplacement, souvent modifié par un numéro, une année, une composition, etc.)
+
 
 ::: tip Id 
 un identifiant unique pour la météorite
