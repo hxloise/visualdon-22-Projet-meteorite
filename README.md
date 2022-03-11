@@ -1,4 +1,7 @@
-# visualdon-22-Projet-meteorite
+# Projet visualisation de données 
+
+Travail réalisé par : Cuche Héloïse & Jasmine Molano 
+
 
 
 Contexte : d'où viennent les données, qui les a créées et dans quel contexte
