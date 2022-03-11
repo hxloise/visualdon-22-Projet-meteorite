@@ -5,8 +5,11 @@ Travail réalisé par : **Cuche Héloïse & Jasmine Molano**
 ## Thématique
 
 **Source de données** : https://www.kaggle.com/nasa/meteorite-landings. Téléchargeables au fomrat csv
+Hot 100 songs, Year end charts: https://www.billboard.com/charts/year-end/2006/hot-100-songs/
 
 **Contexte** : [la Meteoritical Society](https://meteoritical.org/) collecte des données sur les météorites tombées sur Terre depuis l'espace. Cet ensemble de données comprend l'emplacement, la masse, la composition et l'année de chute de plus de 45 000 météorites qui ont frappé notre planète. À noter que le propriétaire de ce dataset est la Nasa et que la dernière modification a eu lieu le 05-11-2016.
+
+Le Billboard est un magazin américain consacré à l'industrie de la musique, il classent au quotidien le top des chanson les plus écoutées.
 
 **Description** : 
 * Name (str) : le nom de la météorite (généralement un emplacement, souvent modifié par un numéro, une année, une composition, etc.) 
