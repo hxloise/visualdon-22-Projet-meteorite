@@ -31,5 +31,8 @@ Travail réalisé par : **Cuche Héloïse & Jasmine Molano**
 * Getting to know the meteorites par Hannah Yan Han https://towardsdatascience.com/getting-to-know-the-meteorites-ef4a6a04290c
 * But: Classifier la masse des météorites par année et position géographique de l'atterrissage.
 
+* How to design a meteorite infographic using NASA data and SAS https://blogs.sas.com/content/sascom/2017/03/28/design-meteorite-infographic-using-nasa-data-sas/
+* But: Tutoriel sur la mise en page de rapport visuel et infographique. Ici on montre combien de météorite ont attérie sur terre ses 4000 dernière années, quel est leur masse et leur géolocalisation.
+
 But: qu'est-ce que vous voulez découvrir ? Des tendances ? Vous voulez explorer ou expliquer?
 Références: Qui d'autre dans le web ou dans la recherche a utilisé ces données ? Dans quel but ?
