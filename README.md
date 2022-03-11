@@ -32,7 +32,7 @@ Travail réalisé par : **Cuche Héloïse & Jasmine Molano**
 But: Classifier la masse des météorites par année et position géographique de l'atterrissage.
 
 * How to design a meteorite infographic using NASA data and SAS https://blogs.sas.com/content/sascom/2017/03/28/design-meteorite-infographic-using-nasa-data-sas/
-But: Tutoriel sur la mise en page de rapport visuel et infographique. Ici on montre combien de météorite ont attérie sur terre ses 4000 dernière années, quel est leur masse et leur géolocalisation.
+But: Tutoriel sur la mise en page de rapport visuel et infographique. Ici il montre combien de météorites ont attéries sur terre ces 4000 dernières années, quelle est leur masses et leur géolocalisations.
 
 * Watching the Sky Fall: Visualizing a Century of Meteorites par Tiffany Farrant-Gonzalez https://www.visualcapitalist.com/watching-the-sky-fall-visualizing-a-century-of-meteorites/
 But: Une sicècle de météorites observées, classé par année de chute, masse et lieu d'atterrissage sur Terre.
