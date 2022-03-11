@@ -10,40 +10,15 @@ Travail réalisé par : **Cuche Héloïse & Jasmine Molano**
 
 **Description** : 
 * Name : le nom de la météorite (généralement un emplacement, souvent modifié par un numéro, une année, une composition, etc.)
-
-
-::: tip Id 
-un identifiant unique pour la météorite
-:::
-
-::: tip Mass
-la masse de la météorite, en grammes
-:::
-
-::: tip Chute
-la chute de la météorite a été observée
-::: 
-
-::: tip Trouvé
-la chute de la météorite n'a pas été observée
-:::
-
-::: tip Année
-l'année où la météorite est tombée, ou l'année où elle a été trouvée.
-:::
-
-::: tip Reclat 
-la latitude d'atterrissage de la météorite
-:::
-
-::: tip Reclong
-la longitude de l'atterrissage de la météorite
-:::
-
-::: tip GeoLocation
-réunit la latitude et la longitude
-:::
-
+* Id : identifiant unique pour la météorite
+* Mass : la masse de la météorite [en grammes]
+* Fall : 
+  * Fell : indique si la chute de la météorite a été observée
+  * Found : indique si la chute de la météorite n'a pas été observée
+* Year : l'année où la météorite est tombée, ou l'année où elle a été trouvée.
+* Reclat : la latitude d'atterrissage de la météorite
+* Reclong : la longitude de l'atterrissage de la météorite
+* GeoLocation : réunit la latitude et la longitude
 
 **But** : 
 
