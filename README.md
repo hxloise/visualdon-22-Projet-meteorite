@@ -1,6 +1,7 @@
 # Projet visualisation de données 
 
-Travail réalisé par : **Cuche Héloïse & Jasmine Molano** 
+Travail réalisé par : **Cuche Héloïse & Molano Jasmine** 
+Wireframe : [Découvrir le projet sur Figma](https://www.figma.com/team_invite/redeem/I2vBXDwGePvZmXWVHCEMRF) 
 
 ## Thématique
 
