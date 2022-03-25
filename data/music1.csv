@@ -1,5 +1,5 @@
-id,artist,song,url,lyrics;;;;
-"2006,Daniel Powter,Bad Day,gH476CxJxfg,Where is the moment we needed the most?
+ï»¿id;artist;song;url;lyrics
+2006;Daniel Powter;Bad Day;gH476CxJxfg;"Where is the moment we needed the most?
 You kick up the leaves, and the magic is lost
 They tell me your blue sky's faded to gray
 They tell me your passion's gone away
@@ -54,7 +54,7 @@ You had a bad day
 You had a bad day
 Had a bad day
 Had a bad day
-Had a bad day";;;;
+Had a bad day"
 2007;Rihanna;Umbrella;CvBfHwUxHIk;"Uh huh, uh huh
 Yeah, Rihanna
 Uh huh, uh huh
@@ -439,7 +439,7 @@ Let's go get a wave
 They say what they gonna say
 Have a drink, clink, found the Bud Light
 Bad bitches like me is hard to come by
-The Patrón-ón? Let's go get it on
+The PatrÃ³n-Ã³n? Let's go get it on
 The zone-one? Yes, I'm in the zone
 Is it two, three? Leave a good tip
 I'ma blow all of my money and don't give two shits, uh

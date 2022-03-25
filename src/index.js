@@ -1,5 +1,6 @@
 import * as d3 from 'd3'
 import allMeteorites from '/data/meteorite-landings.csv'
+import getMusic from './section/player.js'
 
 
 //year must be between 2006-2016
@@ -10,7 +11,7 @@ allMeteorites.forEach(meteorite => {
     }
 })
 
-
+getMusic()
 console.log(meteorites)
 
 //test affichage 
@@ -29,7 +30,7 @@ d3.select("body #Statistics")
 
 
 
-//year chosen by user 
+//year chosen by user // est-ce qqu'on creer pas une classe pour l'année? j'ai de la peine à la récup pour le player
 let yearChoose = 2006
 const label = document.getElementById('year-select')
 
@@ -41,7 +42,10 @@ label.addEventListener('change', function () {
         if (meteorite.year == yearChoose) {
             compteur = compteur + 1
         }
+    
     })
+
+    //afficher les infos de la chanson
 
 
     //draw with data
