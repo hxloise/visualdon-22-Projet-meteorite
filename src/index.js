@@ -1,6 +1,7 @@
 import * as d3 from 'd3'
 import allMeteorites from '/data/meteorite-landings.csv'
 import getMusic from './section/player.js'
+import getYear from './year.js'
 
 
 //year must be between 2006-2016
@@ -11,7 +12,7 @@ allMeteorites.forEach(meteorite => {
     }
 })
 
-getMusic()
+
 console.log(meteorites)
 
 //test affichage 
@@ -35,19 +36,18 @@ let yearChoose = 2006
 const label = document.getElementById('year-select')
 
 label.addEventListener('change', function () {
-    yearChoose = label.value
+    yearChoose = getYear()
     //count number of meteorite
     let compteur = 0
     allMeteorites.forEach(meteorite => {
         if (meteorite.year == yearChoose) {
             compteur = compteur + 1
         }
-    
+
     })
-
-    //afficher les infos de la chanson
-
-
+    // get music infos
+    getMusic()
+    
     //draw with data
     const width = 1000
     const height = 450
@@ -61,21 +61,15 @@ label.addEventListener('change', function () {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
-
-
     //define scale for axe x
     let x = d3.scaleBand()
-    .domain(yearChoose) 
-    .range([0, 1])
+        .domain(yearChoose)
+        .range([0, 1])
 
     //define scale for axe y
     let y = d3.scaleLinear()
-    .domain([0, 10])
-    .range([height, 0])
-
-
-
-
+        .domain([0, 10])
+        .range([height, 0])
 
     //just test something 
     console.log(compteur)
