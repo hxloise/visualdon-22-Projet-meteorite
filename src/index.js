@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 import allMeteorites from '/data/meteorite-landings.csv'
-import getMusic from './section/player.js'
+import playSong from './section/player.js'
 import getYear from './year.js'
 
 
@@ -12,8 +12,6 @@ allMeteorites.forEach(meteorite => {
     }
 })
 
-
-console.log(meteorites)
 
 //test affichage 
 d3.select("body")
@@ -45,9 +43,10 @@ label.addEventListener('change', function () {
         }
 
     })
+
     // get music infos
-    getMusic()
-    
+    playSong()
+
     //draw with data
     const width = 1000
     const height = 450
