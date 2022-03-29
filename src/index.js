@@ -30,8 +30,10 @@ d3.select("body #Statistics")
 
 
 //year chosen by user // est-ce qqu'on creer pas une classe pour l'année? j'ai de la peine à la récup pour le player
-let yearChoose = 2006
+let yearChoose = getYear()
 const label = document.getElementById('year-select')
+// get music infos
+playSong()
 
 label.addEventListener('change', function () {
     yearChoose = getYear()

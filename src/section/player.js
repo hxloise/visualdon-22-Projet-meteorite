@@ -21,19 +21,11 @@ let songOfTheYear = []
 
 // Year
 let year = 2006
-
-// filter data by year using getYear
-function filterSongId(allMusics) {
-    year = getYear()
-    if (allMusics.id == year) {
-        return true
-    }
-}
-
  
 export default function playSong() {
     // Get music of the year 
-    songOfTheYear = allMusics.filter(filterSongId)
+    songOfTheYear = allMusics.filter(music => music.id == year)
+    console.log(songOfTheYear)
 
     // replace info in the HTML tags
     playerSongTitle.innerText = songOfTheYear[0].song
