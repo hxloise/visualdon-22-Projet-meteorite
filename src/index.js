@@ -19,21 +19,18 @@ d3.select("body")
     .attr('id', 'div-number-meteorite')
 
 
-
 //graph number of meteorite
 d3.select("body #Statistics")
     .append("div")
     .attr('id', 'graph-meteorite-numbers')
 
-
-
-
-
-//year chosen by user // est-ce qqu'on creer pas une classe pour l'année? j'ai de la peine à la récup pour le player
-let yearChoose = getYear()
 const label = document.getElementById('year-select')
+
+//year chosen by user 
+let yearChoose = getYear()
+
 // get music infos
-playSong()
+playSong(yearChoose)
 
 label.addEventListener('change', function () {
     yearChoose = getYear()
@@ -43,11 +40,10 @@ label.addEventListener('change', function () {
         if (meteorite.year == yearChoose) {
             compteur = compteur + 1
         }
-
     })
 
     // get music infos
-    playSong()
+    playSong(yearChoose)
 
     //draw with data
     const width = 1000

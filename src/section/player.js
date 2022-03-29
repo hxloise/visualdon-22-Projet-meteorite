@@ -19,20 +19,19 @@ const audioPlayer = document.querySelector('#youtube-audio')
 // tab for music
 let songOfTheYear = []
 
-// Year
-let year = 2006
- 
-export default function playSong() {
+
+
+export default function playSong(year) {
+   
     // Get music of the year 
     songOfTheYear = allMusics.filter(music => music.id == year)
-    console.log(songOfTheYear)
 
     // replace info in the HTML tags
     playerSongTitle.innerText = songOfTheYear[0].song
     playerArtistName.innerText = songOfTheYear[0].artist
-
+    
     // replace song url in the HTML dataset
     audioPlayer.dataset.video = songOfTheYear[0].url
-    console.log(audioPlayer.dataset.video);
+    
 }
 
