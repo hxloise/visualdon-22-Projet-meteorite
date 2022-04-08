@@ -12,16 +12,16 @@ let yearChoose = getYear()
 //get music infos default year
 playSong(yearChoose)
 //draw data default year
-getGraph(getNbMet(yearChoose), getMax())
+getGraph(getNbMet(), yearChoose, getMax())
 
 let test 
 label.addEventListener('change', function () {
     yearChoose = getYear()
     // get music infos
     playSong(yearChoose)
-   
+    svg.replaceChildren()
     //draw data
-    getGraph(getNbMet(yearChoose), getMax())
+    getGraph(getNbMet(), yearChoose, getMax())
 
 })
 

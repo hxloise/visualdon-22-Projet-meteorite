@@ -1,6 +1,8 @@
 import * as d3 from 'd3'
 
-export default function getGraph(data, max) {
+export default function getGraph(fallenData, yearChosen, max) {
+
+    const data = fallenData[yearChosen]
 
     //draw with data
     const width = 100
@@ -34,7 +36,6 @@ export default function getGraph(data, max) {
         .domain([0, max])
         .range([height, 0])
         .nice()
-    console.log(max)
 
     //define rect axe
     let rectScale = d3.scaleLinear()
@@ -51,7 +52,11 @@ export default function getGraph(data, max) {
         .attr("x", 0)
         .attr("y", posRect)
         .attr("width", width)
-        .attr("height", rectHeight )
+        .attr("height", rectHeight)
+        // .attr("height", 0)
+        // .transition()
+        // .duration(400)
+        .attr("height", rectHeight)
         .attr("fill", `#${Math.floor(Math.random() * 16777215).toString(16)}`)
         .attr("stroke", "black")
 
