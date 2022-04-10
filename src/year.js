@@ -8,13 +8,15 @@ import allMeteorites from '/data/meteorite-landings.csv'
 let yearChosen = 2006
 const label = document.getElementById('year-select')
 
-//get year chosen
+//--------------------------------------------------------------------------------------------------------
+
 export function getYear() {
     yearChosen = label.value
     return yearChosen
 }
 
-//get max fallen meteorites
+//--------------------------------------------------------------------------------------------------------
+
 export function getMax() {
     let tab = getNbMet()
     let compteur = 0
@@ -26,6 +28,7 @@ export function getMax() {
     return compteur
 }
 
+//--------------------------------------------------------------------------------------------------------
 
 export function getNbMet() {
     //sort by year
@@ -46,16 +49,13 @@ export function getNbMet() {
     let compteur2012 = 0
 
     let meteoriteData = {}
-    meteorites.forEach(meteorite => {
-
-        //count number of meteorite   
+    meteorites.forEach(meteorite => { 
         const year = meteorite.year
         switch (year) {
             case 2006:
                 compteur2006 = compteur2006 + 1
                 break
-            case 2007:
-                //add 2006 
+            case 2007: 
                 compteur2007 = compteur2007 + 1
                 break
             case 2008:

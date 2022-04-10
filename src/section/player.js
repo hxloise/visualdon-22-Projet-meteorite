@@ -5,7 +5,7 @@ import getYear from '../year.js'
 const url = "https://www.youtube.com/embed/" //gH476CxJxfg
 const urlEnd = "?autoplay=0&loop=1&enablejsapi=1&origin=http%3A%2F%2Flocalhost%3A8080&widgetid=1"
 
-
+let URL = 'https://www.youtube.com/embed/gH476CxJxfg?autoplay=0&loop=1&enablejsapi=1&origin=http%3A%2F%2Flocalhost%3A8080&widgetid=1'
 
 
 // Song infos
@@ -39,7 +39,7 @@ export default function playSong(year) {
     audioPlayer.dataset.video = songOfTheYear[0].url
     
     //constructURl
-    const URL = url + songOfTheYear[0].url + urlEnd
+    URL = url + songOfTheYear[0].url + urlEnd
     console.log(URL)
 
     audioLink.src = URL
