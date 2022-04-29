@@ -1,6 +1,6 @@
 export default class Sprite {
 
-  constructor({ x = 0, y = 0, src = '../../img/mete.png', width = 25, height = 25, couleur = 'blue', velX = 0, velY = 0 } = {}) {
+  constructor({ x = 0, y = 0, src = '../../img/mete.png', width = 25, height = 25, velX = 0, velY = 0 } = {}) {
     this.height = height;
     this.width = width;
     this.x = x;
@@ -8,7 +8,6 @@ export default class Sprite {
     this.src = src;
     this.img = new Image();
     this.img.src = this.src;
-    this.color = this.color;
     this.velX = velX;
     this.velY = velY;
   }
