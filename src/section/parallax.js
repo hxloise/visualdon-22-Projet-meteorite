@@ -1,50 +1,8 @@
-import * as d3 from 'd3'
-import allMeteorites from '/data/meteorite-landings.csv'
-import playSong from './section/player.js'
-import { getYear, getMax, getNbMet } from './year.js'
-import { getGraph, getDonut, getMap }  from './section/statistics.js'
-import Tweens from "./class/Tweens.js";
-import MainLoop from "./lib/Mainloop.mjs";
-import * as random from "./lib/Math.mjs"; 
-import Sprite from "./class/Sprite.js";
-import { domOn } from "./lib/dom.js";
-
-const label = document.getElementById('year-select')
-const svg = document.getElementById('Statistics')
-const svgDonut = document.getElementById('StatisticsDonut')
-const svgMap = document.getElementById('Map')
-//year chosen by user 
-let yearChoose = getYear()
-
-//get music infos default year
-playSong(yearChoose)
-//draw data default year
-getGraph(getNbMet(), yearChoose, getMax())
-//draw donut
-getDonut(getNbMet(), yearChoose)
-//draw map
-getMap()
-
-let test 
-label.addEventListener('change', function () {
-    yearChoose = getYear()
-    // get music infos
-    playSong(yearChoose)
-    svg.replaceChildren()
-    //draw data
-    getGraph(getNbMet(), yearChoose, getMax())
-
-    //draw donut
-    svgDonut.replaceChildren()
-    getDonut(getNbMet(), yearChoose)
-
-    //draw map
-    svgMap.replaceChildren()
-    getMap()
-
-})
-
-//PARALLAX-------------------------------------------------------------------------------------------------
+import Tweens from "../class/Tweens.js";
+import MainLoop from "../lib/mainloop.js";
+import * as random from "../lib/math.mjs"; 
+import Sprite from "../class/image.js";
+import { domOn } from "../lib/dom.js";
 
 const ctx = document.querySelector('canvas').getContext('2d');
 
@@ -55,8 +13,8 @@ ctx.canvas.width = ctx.canvas.clientWidth;
 const nbSprites = Math.round(ctx.canvas.width/3);
 
 const sprites = new Array(nbSprites);
-const imgHeight = 5;
-const imgWidth = 5;
+const imgHeight = 64;
+const imgWidth = 64;
 
 let mouse = { x:-100 , y:-100, height: 200, width: 200}; 
 
