@@ -3,11 +3,9 @@ import allMeteorites from '/data/meteorite-landings.csv'
 import playSong from './section/player.js'
 import { getYear, getMax, getNbMet } from './year.js'
 import { getGraph, getDonut, getMap } from './section/statistics.js'
-import Tweens from "./class/Tweens.js";
 import MainLoop from "./lib/Mainloop.mjs";
 import * as random from "./lib/Math.mjs";
 import Sprite from "./class/Sprite.js";
-import { domOn } from "./lib/dom.js";
 
 const label = document.getElementById('year-select')
 const svg = document.getElementById('Statistics')
@@ -49,19 +47,18 @@ label.addEventListener('change', function () {
 const ctx = document.querySelector('canvas').getContext('2d');
 
 // Définir la taille de la toile identique à la taille de l'écran
-ctx.canvas.height = 300;
-ctx.canvas.width = 500;
+ctx.canvas.height = 600;
+ctx.canvas.width = 1720;
 
 const nbSprites = 10;
 
 const sprites = new Array(nbSprites);
-const imgHeight = 15;
-const imgWidth = 15;
+const imgHeight = 50;
+const imgWidth = 60;
 
-
-//generate meteorittes and sort them
+//generate meteorites and sort them
 generateSprites(sprites)
-sprites.sort((a, b) => a.conpareSize(b));
+//sprites.sort((a, b) => a.conpareSize(b));
 console.log(sprites);
 
 MainLoop.setSimulationTimestep(1000 / 60);
@@ -74,14 +71,13 @@ MainLoop.setUpdate(dt => {
 MainLoop.setDraw(() => {
     ctx.canvas.height = 300;
     ctx.canvas.width = 500;
-
     sprites.forEach(sprite => sprite.draw(ctx));
-    ctx.globalCompositeOperation = "source-in";
-    // draw color
-    ctx.fillStyle = sprites[0].color;
-    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    // reset composite mode
-    ctx.globalCompositeOperation = "source-over";
+     //  ctx.globalCompositeOperation = "source-in";
+    //  draw color
+    //  ctx.fillStyle = 'black';
+     // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    //  reset composite mode
+    //  ctx.globalCompositeOperation = "source-over";
 });
 
 MainLoop.setEnd((fps, panic) => {
