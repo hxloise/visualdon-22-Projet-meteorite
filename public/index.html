@@ -18,7 +18,7 @@
 <body>
     <section id="music_player">
         <div class="year">
-            <label for="year-select">Please choose a year:</label>
+            <label for="year-select">Année</label>
             <select name="year" id="year-select">
                 <option value="2006">2006</option>
                 <option value="2007">2007</option>
@@ -55,20 +55,20 @@
             <script src="https://www.youtube.com/iframe_api"></script>
             <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>
 
-            <div id="player-controls">
+            <!-- <div id="player-controls"> -->
                 <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur précédent -->
-                <button type="button" class="player-control player-control-small" id="player-control-previous">
+                <!-- <button type="button" class="player-control player-control-small" id="player-control-previous">
                     <span class="material-icons">skip_previous</span>
-                </button>
+                </button> -->
                 <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur play/pause -->
-                <button type="button" class="player-control" id="player-control-play">
+                <!-- <button type="button" class="player-control" id="player-control-play">
                     <span class="material-icons">play_arrow</span>
-                </button>
+                </button> -->
                 <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur suivant -->
-                <button type="button" class="player-control player-control-small" id="player-control-next">
+                <!-- <button type="button" class="player-control player-control-small" id="player-control-next">
                     <span class="material-icons">skip_next</span>
                 </button>
-            </div>
+            </div> -->
         </div>
 
 
@@ -76,14 +76,18 @@
     <section id="meteorites">
         <canvas></canvas>
     </section>
-    <section id="Statistics">
-    </section>
+    <div class = stats>  
 
-    <section id="StatisticsDonut">
-    </section>
-
-    <section id="Map">
-    </section>
+        <section id="StatisticsDonut">
+        </section>
+    
+        <section id="Map">
+        </section>
+        
+        <section id="Statistics">
+        </section>
+    </div>
+    
 
 </body>
 

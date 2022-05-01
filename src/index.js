@@ -6,6 +6,7 @@ import { getGraph, getDonut, getMap } from './section/statistics.js'
 import MainLoop from "./lib/Mainloop.mjs";
 import * as random from "./lib/Math.mjs";
 import Sprite from "./class/Sprite.js";
+import './css/index.css';
 
 const label = document.getElementById('year-select')
 const svg = document.getElementById('Statistics')
@@ -50,7 +51,7 @@ const ctx = document.querySelector('canvas').getContext('2d');
 ctx.canvas.height = 600;
 ctx.canvas.width = 1720;
 
-const nbSprites = 10;
+const nbSprites = 100;
 
 const sprites = new Array(nbSprites);
 const imgHeight = 50;
@@ -70,7 +71,8 @@ MainLoop.setUpdate(dt => {
 
 MainLoop.setDraw(() => {
     ctx.canvas.height = 300;
-    ctx.canvas.width = 500;
+    // ctx.canvas.width = 500;
+    ctx.canvas.width = 1535
     sprites.forEach(sprite => sprite.draw(ctx));
      //  ctx.globalCompositeOperation = "source-in";
     //  draw color

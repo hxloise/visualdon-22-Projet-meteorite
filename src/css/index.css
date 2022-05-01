@@ -1,6 +1,89 @@
 /* Packages */
-@import 'normalize.css';
+@import "~normalize.css/normalize.css";
+
+*{
+  font-family: Arial, Helvetica, sans-serif;
+
+  padding: 0;
+  margin: 0;
+  box-sizing : border-box;
+
+  color:#D8D9F2;
+}
+
+body {
+  background-color: #EBEEF2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
 .material-icons {
     vertical-align: middle;
   }
+
+#music_player{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #00030D;
+}
+.year{
+  background-color: #00030D;
+  padding: 1rem;
+  font-size: large;
+}
+#player{
+  margin-left: 30rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse
+}
+  
+#player-infos{
+  margin-left: 20rem;
+  padding: 1rem;
+}
+#youtube-audio{
+  background-color: #323159;
+}
+
+.stats{
+  background-color: #00030D;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#StatisticsDonut{
+  margin: 1rem; 
+  background-color: #323159;
+  border-radius: 1.7rem;
+}
+#Map{
+  margin: 1rem; 
+  background-color: #323159 ;
+  border-radius: 2rem;
+}
+#Statistics{ 
+  padding-left: 6rem;
+  width: 20%;
+  background-color: #323159;
+  border-radius: 2rem;
+}
+
+#year-select{
+  width: 10rem;
+  height: 2rem;
+  font-size: small;
+  padding: 0.5rem;
+}
+
+select{
+  color: white;
+  border-radius: 1rem;
+  border-width : 0.1rem; 
+  background-color: #00030D;
+  border-color: white;
+}

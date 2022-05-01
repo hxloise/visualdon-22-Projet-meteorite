@@ -16,6 +16,10 @@ module.exports = {
     },
     module: {
         rules: [
+            { 
+                test : /\.css$/i,
+                use : ["style-loader", "css-loader"],
+            },
             { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
             {test: /\.csv$/, loader: 'csv-loader', options: {
                     dynamicTyping: true,

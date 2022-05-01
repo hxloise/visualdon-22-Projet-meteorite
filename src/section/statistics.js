@@ -28,7 +28,7 @@ export function getGraph(fallenData, yearChosen, max) {
         .attr("height", height)
         .attr("width", width)
         .style("fill", "white") //by default it's in black
-        .attr("stroke", "black")
+        .attr("stroke", "white")
 
 
     //define scale y axe
@@ -58,13 +58,13 @@ export function getGraph(fallenData, yearChosen, max) {
         // .duration(400)
         .attr("height", rectHeight)
         .attr("fill", `#${Math.floor(Math.random() * 16777215).toString(16)}`)
-        .attr("stroke", "black")
+        .attr("stroke", "white")
 
     //draw y axe
     svg.append("g").call(d3.axisLeft(y)).call(d3.axisLeft(y).tickSize(-width * 1.3).ticks(10))
 
     //custom tick line
-    svg.selectAll(".tick line").attr("stroke", "black").attr("opacity", "1")
+    svg.selectAll(".tick line").attr("stroke", "white").attr("opacity", "1")
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -122,8 +122,8 @@ export function getDonut(data, yearChosen) {
 
 export function getMap() {
 
-    const width = 1200
-    const height = 850
+    const width = 800
+    const height = 300
 
     d3.select('#Map')
         .append('div')
@@ -143,9 +143,9 @@ export function getMap() {
 
     //define projection
     const projection = d3.geoOrthographic()
-        .scale(200)
+        .scale(140)
         .clipAngle(90)
-        .translate([width / 2, height / 3])
+        .translate([width / 2, height/1.8])
         .rotate([0, 0, 0])
 
     //GeoJson object convert into svg path string, like shape generator
@@ -161,9 +161,9 @@ export function getMap() {
             .data(data.features)
             .enter()
             .append("path")
-            .attr("fill", "blue")
+            .attr("fill", "#120F26")
             .attr("d", path)
-            .style("stroke", "#ffff")
+            .style("stroke", "#CEB3F2")
     })
 
     // Function rotate using timer()
