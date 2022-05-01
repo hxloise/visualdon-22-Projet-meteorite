@@ -5,7 +5,7 @@ import { getYear, getMax, getNbMet } from './year.js'
 import { getGraph, getDonut, getMap } from './section/statistics.js'
 import MainLoop from "./lib/Mainloop.mjs";
 import * as random from "./lib/Math.mjs";
-import Sprite from "./class/Sprite.js";
+import Imgs from "./class/Imgs.js";
 import './css/index.css';
 
 const label = document.getElementById('year-select')
@@ -42,42 +42,45 @@ label.addEventListener('change', function () {
     getMap()
 
     //generate meteorites and sort them
-    generateSprites(sprites)
-    //sprites.sort((a, b) => a.conpareSize(b));
-
+    generateImgs(Images)
+    Images.sort((a, b) => a.conpareSize(b));
 })
 
 //PARALLAX-------------------------------------------------------------------------------------------------
 
 const ctx = document.querySelector('canvas').getContext('2d');
 
-// Définir la taille de la toile identique à la taille de l'écran
+// define same canvas size as the screen
 ctx.canvas.height = 600;
 ctx.canvas.width = 1720;
 
-let nbSprites = getMax();
-console.log('IL Y A ' + nbSprites);
-const sprites = new Array(nbSprites);
-const imgHeight = 50;
-const imgWidth = 60;
+let nbImgs = getMax();
+
+const Images = new Array(nbImgs);
+const imgHeight = 310/3;
+const imgWidth = 324/3;
+
+// interval of each meteorite drawing
+let interval=1000; //length of song divided by de number of meteorite
 
 //generate meteorites and sort them
-generateSprites(sprites)
-//sprites.sort((a, b) => a.conpareSize(b));
-console.log(sprites);
+generateImgs(Images)
+Images.sort((a, b) => a.conpareSize(b));
 
 MainLoop.setSimulationTimestep(1000 / 60);
 MainLoop.setUpdate(dt => {
-    for (const sprite of sprites) {
-        sprite.move(dt)
+    for (const Img of Images) {
+        Img.move(dt)
     }
 });
 
 MainLoop.setDraw(() => {
     ctx.canvas.height = 300;
-    // ctx.canvas.width = 500;
     ctx.canvas.width = 1535
-    sprites.forEach(sprite => sprite.draw(ctx));
+    for (const Img of Images) {
+       // setInterval(drawImg(Img,ctx),interval) // should draw 1 meteorit every secon :'(
+        Img.draw(ctx)
+    }
 });
 
 MainLoop.setEnd((fps, panic) => {
@@ -86,17 +89,20 @@ MainLoop.setEnd((fps, panic) => {
 
 MainLoop.start();
 
+//function to draw img within a timstep
+function drawImg(Img,ctx) {
+    Img.draw(ctx)
+}
+
 // function for generating meteorites
-function generateSprites(sprites) {
-    for (let i = 0; i < sprites.length; i++) {
+function generateImgs(Images) {
+    for (let i = 0; i < Images.length; i++) {
         const randDenominateur = random.getRandomInt(1, 3);
-        const x = random.getRandomInt(0, ctx.canvas.width)
-        const y = random.getRandomInt(0, ctx.canvas.height)
-        const width = Math.round(imgWidth / randDenominateur)
-        const height = Math.round(imgHeight / randDenominateur)
-        const velX = 50 * 0.001 //vecteurs qui servent pour la direction 
-        const velY = 60 * 0.001
-        const sprite = new Sprite({ x, y, width, height, velX, velY })
-        sprites.push(sprite)
+        Images[i] = new Imgs({
+            x: random.getRandomInt(100, ctx.canvas.width),
+            y: random.getRandomInt(-100, ctx.canvas.height),
+            width: Math.round(imgWidth / randDenominateur),
+            height: Math.round(imgHeight / randDenominateur),
+        })
     }
 }
