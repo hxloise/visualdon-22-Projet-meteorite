@@ -21,7 +21,7 @@ export default class Sprite {
 
 
   move(dt) {
-    this.x += this.velX * dt;
+    this.x -= this.velX * dt;
     this.y += this.velY * dt;
   }
   

@@ -41,6 +41,10 @@ label.addEventListener('change', function () {
     svgMap.replaceChildren()
     getMap()
 
+    //generate meteorites and sort them
+    generateSprites(sprites)
+    //sprites.sort((a, b) => a.conpareSize(b));
+
 })
 
 //PARALLAX-------------------------------------------------------------------------------------------------
@@ -51,8 +55,8 @@ const ctx = document.querySelector('canvas').getContext('2d');
 ctx.canvas.height = 600;
 ctx.canvas.width = 1720;
 
-const nbSprites = 100;
-
+let nbSprites = getMax();
+console.log('IL Y A ' + nbSprites);
 const sprites = new Array(nbSprites);
 const imgHeight = 50;
 const imgWidth = 60;
@@ -74,12 +78,6 @@ MainLoop.setDraw(() => {
     // ctx.canvas.width = 500;
     ctx.canvas.width = 1535
     sprites.forEach(sprite => sprite.draw(ctx));
-     //  ctx.globalCompositeOperation = "source-in";
-    //  draw color
-    //  ctx.fillStyle = 'black';
-     // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    //  reset composite mode
-    //  ctx.globalCompositeOperation = "source-over";
 });
 
 MainLoop.setEnd((fps, panic) => {
@@ -92,13 +90,13 @@ MainLoop.start();
 function generateSprites(sprites) {
     for (let i = 0; i < sprites.length; i++) {
         const randDenominateur = random.getRandomInt(1, 3);
-        sprites[i] = new Sprite({
-            x: random.getRandomInt(0, ctx.canvas.width),
-            y: random.getRandomInt(0, ctx.canvas.height),
-            width: Math.round(imgWidth / randDenominateur),
-            height: Math.round(imgHeight / randDenominateur),
-            velX: (Math.random() - 0.5) / 5, //vecteurs qui servent pour la direction 
-            velY: (Math.random() - 0.5) / 5
-        })
+        const x = random.getRandomInt(0, ctx.canvas.width)
+        const y = random.getRandomInt(0, ctx.canvas.height)
+        const width = Math.round(imgWidth / randDenominateur)
+        const height = Math.round(imgHeight / randDenominateur)
+        const velX = 50 * 0.001 //vecteurs qui servent pour la direction 
+        const velY = 60 * 0.001
+        const sprite = new Sprite({ x, y, width, height, velX, velY })
+        sprites.push(sprite)
     }
 }
