@@ -41,9 +41,14 @@ label.addEventListener('change', function () {
     svgMap.replaceChildren()
     getMap()
 
+    // clear interval and canevas on change
+    clearInterval(imageSpawner);
+
+    ctx.canvas.height = 300
+    ctx.canvas.width = 1535
     //generate meteorites and sort them
-    generateImgs(Images)
-    Images.sort((a, b) => a.conpareSize(b));
+    setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
+    //Images.sort((a, b) => a.conpareSize(b));
 })
 
 //PARALLAX-------------------------------------------------------------------------------------------------
@@ -56,16 +61,17 @@ ctx.canvas.width = 1720;
 
 let nbImgs = getMax();
 
-const Images = new Array(nbImgs);
-const imgHeight = 310/3;
-const imgWidth = 324/3;
+const Images = [];
+const imgHeight = 310 / 3;
+const imgWidth = 324 / 3;
 
 // interval of each meteorite drawing
-let interval=1000; //length of song divided by de number of meteorite
+let interval = 60000 / nbImgs; //length of song divided by de number of meteorite
 
 //generate meteorites and sort them
-generateImgs(Images)
-Images.sort((a, b) => a.conpareSize(b));
+const imageSpawner = setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
+
+//Images.sort((a, b) => a.conpareSize(b));
 
 MainLoop.setSimulationTimestep(1000 / 60);
 MainLoop.setUpdate(dt => {
@@ -75,10 +81,9 @@ MainLoop.setUpdate(dt => {
 });
 
 MainLoop.setDraw(() => {
-    ctx.canvas.height = 300;
+    ctx.canvas.height = 300
     ctx.canvas.width = 1535
     for (const Img of Images) {
-       // setInterval(drawImg(Img,ctx),interval) // should draw 1 meteorit every secon :'(
         Img.draw(ctx)
     }
 });
@@ -89,20 +94,32 @@ MainLoop.setEnd((fps, panic) => {
 
 MainLoop.start();
 
-//function to draw img within a timstep
-function drawImg(Img,ctx) {
-    Img.draw(ctx)
-}
 
 // function for generating meteorites
-function generateImgs(Images) {
-    for (let i = 0; i < Images.length; i++) {
-        const randDenominateur = random.getRandomInt(1, 3);
-        Images[i] = new Imgs({
-            x: random.getRandomInt(100, ctx.canvas.width),
-            y: random.getRandomInt(-100, ctx.canvas.height),
-            width: Math.round(imgWidth / randDenominateur),
-            height: Math.round(imgHeight / randDenominateur),
-        })
+//function generateImgs(Images) {
+//    for (let i = 0; i < Images.length; i++) {
+//        const randDenominateur = random.getRandomInt(1, 3);
+//        Images[i] = new Imgs({
+//            x: random.getRandomInt(100, ctx.canvas.width),
+//            y: random.getRandomInt(-100, ctx.canvas.height),
+//            width: Math.round(imgWidth / randDenominateur),
+//            height: Math.round(imgHeight / randDenominateur),
+//        })
+//    }
+//}
+
+let cmpt = 0;
+function generateImg() {
+    if (cmpt >= nbImgs) {
+        clearInterval(imageSpawner);
+        return;
     }
+    const randDenominateur = random.getRandomInt(1, 3);
+    Images[cmpt] = new Imgs({
+        x: random.getRandomInt(500, ctx.canvas.width),
+        y: -100,
+        width: Math.round(imgWidth / randDenominateur),
+        height: Math.round(imgHeight / randDenominateur),
+    })
+    cmpt++;
 }
