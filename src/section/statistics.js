@@ -7,20 +7,31 @@ export function getGraph(fallenData, yearChosen, max) {
     //draw with data
     const width = 100
     const height = max / 10
-    const margin = { top: 50, bottom: 50, left: 30, right: 0 }
+    const margin = { top: 50, bottom: 50, left: 31, right: 0 }
 
+//----------------------------------------------------------------------------
     //add div to section statistic
     d3.select('#Statistics')
         .append('div')
         .attr('id', 'graph-meteorite-numbers')
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+
+    const div = d3.select("#graph-meteorite-numbers")
+        .append("text")
+        .attr('id', "nb")
+        .text(data)
+//----------------------------------------------------------------------------
 
     //add svg in div
     const svg = d3.select("#graph-meteorite-numbers")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
+        .attr("transform", "rotate(90,0,0)")
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        
 
     svg.append("rect")
         .attr("x", 0)
@@ -61,10 +72,10 @@ export function getGraph(fallenData, yearChosen, max) {
         .attr("stroke", "white")
 
     //draw y axe
-    svg.append("g").call(d3.axisLeft(y)).call(d3.axisLeft(y).tickSize(-width * 1.3).ticks(10))
+    // svg.append("g").call(d3.axisLeft(y)).call(d3.axisLeft(y).tickSize(-width * 1.3).ticks(10))
 
     //custom tick line
-    svg.selectAll(".tick line").attr("stroke", "white").attr("opacity", "1")
+    svg.selectAll(".tick line").attr("stroke", "white").attr("opacity", "1")   
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -103,6 +114,7 @@ export function getDonut(data, yearChosen) {
 
     //return an array where elements are the key/value of object in argument
     const data_ready = pie(Object.entries(data))
+    console.log(data_ready)
 
     //draw in svg
     svg.selectAll('whatever')
@@ -134,18 +146,18 @@ export function getMap() {
         .attr("width", width)
         .attr("height", height)
 
-    
+
     const config = {
         speed: 0.010,
         verticalTilted: -10,
         horizontalTilted: 0
     }
-
+    
     //define projection
     const projection = d3.geoOrthographic()
         .scale(140)
         .clipAngle(90)
-        .translate([width / 2, height/1.8])
+        .translate([width / 2, height / 1.8])
         .rotate([0, 0, 0])
 
     //GeoJson object convert into svg path string, like shape generator

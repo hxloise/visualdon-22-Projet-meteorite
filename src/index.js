@@ -24,13 +24,14 @@ getDonut(getNbMet(), yearChoose)
 //draw map
 getMap()
 
+// console.log(allMeteorites)
 let test
 label.addEventListener('change', function () {
     yearChoose = getYear()
     // get music infos
     playSong(yearChoose)
     svg.replaceChildren()
-    //draw data
+    //draw data 
     getGraph(getNbMet(), yearChoose, getMax())
 
     //draw donut
