@@ -12,11 +12,15 @@ const label = document.getElementById('year-select')
 const svg = document.getElementById('Statistics')
 const svgDonut = document.getElementById('StatisticsDonut')
 const svgMap = document.getElementById('Map')
+const playerPlay = document.querySelector('#player-control-play')
 //year chosen by user 
 let yearChoose = getYear()
 
 //get music infos default year
-playSong(yearChoose)
+
+playerPlay.addEventListener('click', () => {
+    playSong(yearChoose)
+})
 //draw data default year
 getGraph(getNbMet(), yearChoose, getMax())
 //draw donut
@@ -97,19 +101,6 @@ MainLoop.setEnd((fps, panic) => {
 
 MainLoop.start();
 
-
-// function for generating meteorites
-//function generateImgs(Images) {
-//    for (let i = 0; i < Images.length; i++) {
-//        const randDenominateur = random.getRandomInt(1, 3);
-//        Images[i] = new Imgs({
-//            x: random.getRandomInt(100, ctx.canvas.width),
-//            y: random.getRandomInt(-100, ctx.canvas.height),
-//            width: Math.round(imgWidth / randDenominateur),
-//            height: Math.round(imgHeight / randDenominateur),
-//        })
-//    }
-//}
 
 let cmpt = 0;
 function generateImg() {

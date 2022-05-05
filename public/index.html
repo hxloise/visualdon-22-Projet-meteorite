@@ -7,7 +7,8 @@
 
     <!-- Fonts google pour les icônes et la police par défaut -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap" />
 
     <!-- Lien vers le fichier manifest pour la PWA -->
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -26,17 +27,16 @@
                 <option value="2010">2010</option>
                 <option value="2011">2011</option>
                 <option value="2012">2012</option>
-                <option value="2013">2013</option>
             </select>
         </div>
 
         <div id="player">
+            <audio id="audio-player"></audio>
             <div id="player-infos">
                 <div id="player-infos-song">
                     <span class="material-icons">music_note</span>
                     <!-- utiliser l'id de cet élément pour changer le titre de la chanson -->
                     <span id="player-infos-song-title">
-                        -
                     </span>
                 </div>
 
@@ -44,48 +44,47 @@
                     <span class="material-icons">person</span>
                     <!-- utiliser l'id de cet élément pour changer le nom de l'artiste -->
                     <span id="player-infos-artist-name">
-                        -
                     </span>
                 </div>
             </div>
 
-            <!-- API youtube, on vient renplacer data video par l'url dan notre tableau -->
+            <!-- API youtube, on vient renplacer data video par l'url dan notre tableau 
             <div data-video="VIDEO_ID" data-autoplay="0" data-loop="1" id="youtube-audio"></div>
             <script src="https://www.youtube.com/iframe_api"></script>
-            <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>
+            <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>-->
 
-            <!-- <div id="player-controls"> -->
+            <div id="player-controls">
                 <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur précédent -->
-                <!-- <button type="button" class="player-control player-control-small" id="player-control-previous">
+                <button type="button" class="player-control player-control-small" id="player-control-previous">
                     <span class="material-icons">skip_previous</span>
-                </button> -->
+                </button>
                 <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur play/pause -->
-                <!-- <button type="button" class="player-control" id="player-control-play">
+                <button type="button" class="player-control" id="player-control-play">
                     <span class="material-icons">play_arrow</span>
-                </button> -->
+                </button>
                 <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur suivant -->
-                <!-- <button type="button" class="player-control player-control-small" id="player-control-next">
+                <button type="button" class="player-control player-control-small" id="player-control-next">
                     <span class="material-icons">skip_next</span>
                 </button>
-            </div> -->
+            </div>
         </div>
     </div>
     <div id="separateur"></div>
     <section id="meteorites">
         <canvas></canvas>
     </section>
-    <div class = stats>  
+    <div class=stats>
 
         <section id="StatisticsDonut">
         </section>
-    
+
         <section id="Map">
         </section>
-        
+
         <section id="Statistics">
         </section>
     </div>
-    
+
 
 </body>
 

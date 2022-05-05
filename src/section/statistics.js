@@ -62,8 +62,6 @@ export function getGraph(fallenData, yearChosen, max) {
     //define rect attributes
     let rectHeight = height - y(data)
     let posRect = height - rectHeight
-    //ckeck in console
-    console.log("Le nombre de météorite tombée durant l'année sélectionnée est de :", data)
 
     svg.append("rect")
         .attr("x", 0)
@@ -201,7 +199,6 @@ export function getDonut(data, yearChosen) {
 //--------------------------------------------------------------------------------------------------------
 
 export function getMap(allMet) {
-    console.log("on est là", allMet)
     const width = 400
     const height = 300
     //const margin = {top:20, right:20, bottom:30, left:50}
