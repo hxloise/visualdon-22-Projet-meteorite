@@ -28,7 +28,7 @@ module.exports = {
                     skipEmptyLines: true
                 }
             }, {
-                test: /\.(mp3|png|jpe?g|gif)$/i,
+                test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
                         loader: 'file-loader',
@@ -45,8 +45,6 @@ module.exports = {
                 test: /\.svg$/,
                 use: ['@svgr/webpack'],
             },
-<<<<<<< HEAD
-=======
             {
                 test: /\.mp3$/,
                 use: [
@@ -55,7 +53,6 @@ module.exports = {
                     },
                 ],
             }
->>>>>>> e85910d97541c80155416f6e4368e83c8b80416b
         ]
     },
     plugins: [HtmlWebpackPluginConfig]
