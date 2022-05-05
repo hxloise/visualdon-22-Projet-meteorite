@@ -1,9 +1,10 @@
 import * as d3 from 'd3'
 import allMusics from '../../data/music.json'
 import getYear from '../year.js'
+import badDay from '../../music/BoBAirplanes.mp3'
 
 
-const url = "../../music/"
+const url = '../../music/'
 
 // Song infos
 const playerSection = document.querySelector('#player')
@@ -30,8 +31,9 @@ export default function playSong(year) {
     playerArtistName.innerText = songOfTheYear[0].artist
 
     // replace song url in the HTML dataset
-    audioPlayer.src =url+songOfTheYear[0].url
+    audioPlayer.src = badDay //url+songOfTheYear[0].url
     console.log(audioPlayer.src)
+    audioPlayer.load()
     audioPlayer.play()
 }
 
