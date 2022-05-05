@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 import allMeteorites from '/data/meteorite-landings.csv'
 import playSong from './section/player.js'
-import { getYear, getMax, getNbMet } from './year.js'
+import { getYear, getMax, getNbMet, getMatiere } from './year.js'
 import { getGraph, getDonut, getMap } from './section/statistics.js'
 import MainLoop from "./lib/Mainloop.mjs";
 import * as random from "./lib/Math.mjs";
@@ -20,9 +20,11 @@ playSong(yearChoose)
 //draw data default year
 getGraph(getNbMet(), yearChoose, getMax())
 //draw donut
-getDonut(getNbMet(), yearChoose)
+getDonut(getMatiere(), yearChoose)
 //draw map
-getMap()
+getMap(allMeteorites)
+
+const dataClassified = getMatiere()
 
 // console.log(allMeteorites)
 let test
@@ -36,11 +38,11 @@ label.addEventListener('change', function () {
 
     //draw donut
     svgDonut.replaceChildren()
-    getDonut(getNbMet(), yearChoose)
+    getDonut(getMatiere(), yearChoose)
 
     //draw map
     svgMap.replaceChildren()
-    getMap()
+    getMap(allMeteorites)
 
     // clear interval and canevas on change
     clearInterval(imageSpawner);
@@ -82,8 +84,8 @@ MainLoop.setUpdate(dt => {
 });
 
 MainLoop.setDraw(() => {
-    ctx.canvas.height = 300
-    ctx.canvas.width = 1535
+    ctx.canvas.height = 380
+    ctx.canvas.width = 1380
     for (const Img of Images) {
         Img.draw(ctx)
     }

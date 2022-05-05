@@ -89,5 +89,51 @@ export function getNbMet() {
 }
 
 export function getMatiere(){
-    
+    //get data between 2006-2013
+    let dataFinal = []
+    allMeteorites.forEach(m => {
+      if(m.year >= 2006 && m.year <= 2013){
+          dataFinal.push(m)
+      }
+  });
+
+//------------------------------------------------------------------------------
+//---------------Meteorites classification--------------------------------------
+//------------------------------------------------------------------------------.
+
+const typeIron = 'Iron';
+const typeStonyIron = 'StonyIron';
+const typeStony = 'Stony';
+
+//----------------Iron Meteorites-----------------------------------------------
+let ironMeteorites = dataFinal.filter(e=>e.recclass.includes('Iron') || e.recclass.includes('Relict iron'));
+ironMeteorites.forEach(e=>e.Type=typeIron);
+
+
+//----------------Stony meteorites----------------------------------------------
+const CLASSES_TO_KEEP = ['A', 'L', 'C', 'E', 'B', 'D', 'F', 'H', 'K', 'O', 'R', 'S', 'U', 'W'];
+
+let stonyMeteorites = dataFinal.filter(e=> CLASSES_TO_KEEP.includes(e.recclass[0]) || e.recclass.includes('Martian') && !e.recclass.includes('Relict iron'));
+stonyMeteorites.forEach(e=>e.Type=typeStony);
+// console.log("stony",stonyMeteorites);
+
+
+//-----------------Stony-iron meteorites----------------------------------------
+let stonyIronMeteorites = dataFinal.filter(e=>e.recclass.includes('Pallasite') || e.recclass.includes('Mesosiderite'));
+stonyIronMeteorites.forEach(e=>e.Type=typeStonyIron);
+// console.log("StonyIronMeteorites",stonyIronMeteorites);
+
+
+//data classified
+let dataClassified = [...stonyMeteorites,...stonyIronMeteorites,...ironMeteorites];
+//console.log("final",dataClassified);
+
+// const COLOR = Object.freeze({
+//     Iron      : '#2171b5',
+//     StonyIron : 'brown',
+//     Stony     : 'green'
+// });
+
+return dataClassified
+
 }

@@ -22,7 +22,6 @@ const playerNext = document.querySelector('#player-control-next')
 // Tag audio
 const audioPlayer = document.querySelector('#youtube-audio')
 const audioLink = document.querySelector('#youtube-player')
-
 // tab for music
 let songOfTheYear = []
 
@@ -43,7 +42,7 @@ export default function playSong(year) {
     console.log(URL)
 
     audioLink.src = URL
-    console.log(audioLink)  
+    console.log(audioLink) 
     
 }
 
