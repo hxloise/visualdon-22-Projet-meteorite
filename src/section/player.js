@@ -31,9 +31,9 @@ export default function playSong(year) {
     playerArtistName.innerText = songOfTheYear[0].artist
 
     // replace song url in the HTML dataset
-    audioPlayer.src = badDay //url+songOfTheYear[0].url
+    audioPlayer.setAttribute =("src",url+songOfTheYear[0].url)
     console.log(audioPlayer.src)
-    audioPlayer.load()
+  //  audioPlayer.load()
     audioPlayer.play()
 }
 
@@ -56,9 +56,9 @@ function playPreviousSong() {
     // If we get out of the array we restart from the begining
     if (newIndex >= 0)
         playSong(allMusics[newIndex].id)
-        console.log(allMusics[newIndex].id)
-    //else
-    //    playSong(songOfTheYear[allMusics.length - 1])
+       // console.log(allMusics[newIndex].id)
+    else
+        playSong(allMusics[allMusics.length - 1].id)
 }
 
 // On click we send the instruction to the player
