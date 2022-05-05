@@ -45,6 +45,17 @@ module.exports = {
                 test: /\.svg$/,
                 use: ['@svgr/webpack'],
             },
+<<<<<<< HEAD
+=======
+            {
+                test: /\.mp3$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                    },
+                ],
+            }
+>>>>>>> e85910d97541c80155416f6e4368e83c8b80416b
         ]
     },
     plugins: [HtmlWebpackPluginConfig]
