@@ -2,10 +2,6 @@ import * as d3 from 'd3'
 import allMusics from '../../data/music.json'
 import { getYear } from '../year.js'
 
-
-//./music/FloRida-Low.mp3
-
-// console.log("l'année est ", year)
 const url = './music/'
 
 // Song infos
@@ -27,7 +23,7 @@ const audioPlayer = document.querySelector('#audio-player')
 // tab for music
 let songOfTheYear = []
 
-export default function playSong(year) {
+function playSong(year) {
     
     label.value = year
     // Get music of the year 
@@ -116,5 +112,9 @@ audioPlayer.addEventListener('click', () => {
 // Bouton précédent
 playerPrev.addEventListener('click', playPreviousSong)
 
+
 // Bouton suivant
 playerNext.addEventListener('click', playNextSong)
+
+
+export { playPreviousSong, playSong, playNextSong }

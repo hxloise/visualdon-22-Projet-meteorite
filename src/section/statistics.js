@@ -245,7 +245,7 @@ export function getMap(allMet) {
             .selectAll("path")
             .data(data.features)
             .join("path")
-            .attr("d", patg.projection(projection))
+            .attr("d", path.projection(projection))
             .attr("id", function(d) {return d.properties.name})
             .attr("fill", function (d) {
                 let number = 0;

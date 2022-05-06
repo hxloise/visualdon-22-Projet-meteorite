@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 import allMeteorites from '/data/meteorite-landings.csv'
-import playSong from './section/player.js'
+import { playSong, playNextSong, playPreviousSong } from './section/player.js'
 import { getYear, getMax, getNbMet, getMatiere } from './year.js'
 import { getGraph, getDonut, getMap } from './section/statistics.js'
 import MainLoop from "./lib/Mainloop.mjs";
@@ -13,14 +13,17 @@ const svg = document.getElementById('Statistics')
 const svgDonut = document.getElementById('StatisticsDonut')
 const svgMap = document.getElementById('Map')
 const playerPlay = document.querySelector('#audio-player')
+const playerPrev = document.querySelector('#player-control-previous')
+const playerNext = document.querySelector('#player-control-next')
+
 //year chosen by user 
 let yearChoose = getYear()
 
 //get music infos default year
-
 playerPlay.addEventListener('click', () => {
     playSong(yearChoose)
 })
+
 //draw data default year
 getGraph(getNbMet(), yearChoose, getMax())
 //draw donut
@@ -30,12 +33,46 @@ getMap(allMeteorites)
 
 const dataClassified = getMatiere()
 
-// console.log(allMeteorites)
 
 label.addEventListener('change', function () {
+
+    yearChoose = getYear()
+
+    // play previous song
+    playSong(yearChoose)
+
+    svg.replaceChildren()
+    //draw data 
+    getGraph(getNbMet(), yearChoose, getMax())
+
+    //draw donut
+    svgDonut.replaceChildren()
+    getDonut(getMatiere(), yearChoose)
+
+    //draw map
+    svgMap.replaceChildren()
+    getMap(allMeteorites)
+
+    // clear interval and canevas on change
+
+    clearInterval(imageSpawner)
+    ctx.canvas.height = 384
+    ctx.canvas.width = 1519
+
+    // clear Imgs tab and set new size
+    Images=[]
+    nbImgs = getMax()
+    
+    //generate meteorites and sort them
+    setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
+    //ON DIRAIT QU'IL N'ARRIVE PAS à GENERER LES IMGS :(
+    //Images.sort((a, b) => a.conpareSize(b));
+})
+
+playerPrev.addEventListener('click', function () {
     yearChoose = getYear()
     // get music infos
-    playSong(yearChoose)
+    playPreviousSong()
     svg.replaceChildren()
     //draw data 
     getGraph(getNbMet(), yearChoose, getMax())
@@ -51,8 +88,35 @@ label.addEventListener('change', function () {
     // clear interval and canevas on change
     clearInterval(imageSpawner);
 
-    ctx.canvas.height = 300
-    ctx.canvas.width = 1535
+    ctx.canvas.height = 384
+    ctx.canvas.width = 1519
+    //generate meteorites and sort them
+    setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
+    //Images.sort((a, b) => a.conpareSize(b));
+})
+
+playerNext.addEventListener('click', function () {
+    yearChoose = getYear()
+    // play next song
+    playNextSong()
+
+    svg.replaceChildren()
+    //draw data 
+    getGraph(getNbMet(), yearChoose, getMax())
+
+    //draw donut
+    svgDonut.replaceChildren()
+    getDonut(getMatiere(), yearChoose)
+
+    //draw map
+    svgMap.replaceChildren()
+    getMap(allMeteorites)
+
+    // clear interval and canevas on change
+    clearInterval(imageSpawner);
+
+    ctx.canvas.height = 384
+    ctx.canvas.width = 1519
     //generate meteorites and sort them
     setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
     //Images.sort((a, b) => a.conpareSize(b));
@@ -63,12 +127,11 @@ label.addEventListener('change', function () {
 const ctx = document.querySelector('canvas').getContext('2d');
 
 // define same canvas size as the screen
-ctx.canvas.height = 600;
-ctx.canvas.width = 1720;
+ctx.canvas.height = 384
+ctx.canvas.width = 1519
 
 let nbImgs = getMax();
-
-const Images = [];
+let Images = [];
 const imgHeight = 310 / 3;
 const imgWidth = 324 / 3;
 
@@ -76,21 +139,21 @@ const imgWidth = 324 / 3;
 let interval = 60000 / nbImgs; //length of song divided by de number of meteorite
 
 //generate meteorites and sort them
-const imageSpawner = setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
+let imageSpawner = setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
 
 //Images.sort((a, b) => a.conpareSize(b));
 
 MainLoop.setSimulationTimestep(1000 / 60);
 MainLoop.setUpdate(dt => {
-    for (const Img of Images) {
+    for (let Img of Images) {
         Img.move(dt)
     }
 });
 
 MainLoop.setDraw(() => {
-    ctx.canvas.height = 380
-    ctx.canvas.width = 1380
-    for (const Img of Images) {
+    ctx.canvas.height = 384
+    ctx.canvas.width = 1519
+    for (let Img of Images) {
         Img.draw(ctx)
     }
 });
