@@ -6,6 +6,7 @@ import { getGraph, getDonut, getMap } from './section/statistics.js'
 import MainLoop from "./lib/Mainloop.mjs";
 import * as random from "./lib/Math.mjs";
 import Imgs from "./class/Imgs.js";
+import Tweens from "./class/Tweens";
 import './css/index.css';
 
 const label = document.getElementById('year-select')
@@ -15,6 +16,8 @@ const svgMap = document.getElementById('Map')
 const playerPlay = document.querySelector('#audio-player')
 const playerPrev = document.querySelector('#player-control-previous')
 const playerNext = document.querySelector('#player-control-next')
+//class for changing color of a PNG image
+const tweens = new Tweens();
 
 //year chosen by user 
 let yearChoose = getYear()
@@ -31,7 +34,9 @@ getDonut(getMatiere(), yearChoose)
 //draw map
 getMap(allMeteorites)
 
+// get the material type of the meteorites
 const dataClassified = getMatiere()
+let MaterialByYear = dataClassified.filter(type => type.year == yearChoose)
 
 
 label.addEventListener('change', function () {
@@ -54,19 +59,20 @@ label.addEventListener('change', function () {
     getMap(allMeteorites)
 
     // clear interval and canevas on change
-
     clearInterval(imageSpawner)
     ctx.canvas.height = 384
     ctx.canvas.width = 1519
 
-    // clear Imgs tab and set new size
-    Images=[]
-    nbImgs = getMax()
-    
+    // clear Imgs tab and reset counter interval and nbImgs
+    cmpt = 0;
+    nbImgs = nbImgsEachYear[yearChoose]
+    Images = []
+    interval = (playerPlay.duration * 1000) / nbImgs;   // NE MARCHE PAS :/
+
     //generate meteorites and sort them
-    setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
-    //ON DIRAIT QU'IL N'ARRIVE PAS à GENERER LES IMGS :(
-    //Images.sort((a, b) => a.conpareSize(b));
+    imageSpawner = setInterval(() => generateImg(), interval) // Draws 1 meteorit every x second 
+    Images.forEach(img => img.setSrc(img.type))
+    console.log(Images);
 })
 
 playerPrev.addEventListener('click', function () {
@@ -86,13 +92,19 @@ playerPrev.addEventListener('click', function () {
     getMap(allMeteorites)
 
     // clear interval and canevas on change
-    clearInterval(imageSpawner);
-
+    clearInterval(imageSpawner)
     ctx.canvas.height = 384
     ctx.canvas.width = 1519
+
+    // clear Imgs tab and reset counter interval and nbImgs
+    cmpt = 0;
+    nbImgs = nbImgsEachYear[yearChoose]
+    Images = []
+    interval = (playerPlay.duration * 1000) / nbImgs;   // NE MARCHE PAS :/
+
     //generate meteorites and sort them
-    setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
-    //Images.sort((a, b) => a.conpareSize(b));
+    imageSpawner = setInterval(() => generateImg(), interval) // Draws 1 meteorit every x second
+    Images.forEach(img => img.setSrc(img.type))
 })
 
 playerNext.addEventListener('click', function () {
@@ -113,13 +125,19 @@ playerNext.addEventListener('click', function () {
     getMap(allMeteorites)
 
     // clear interval and canevas on change
-    clearInterval(imageSpawner);
-
+    clearInterval(imageSpawner)
     ctx.canvas.height = 384
     ctx.canvas.width = 1519
+
+    // clear Imgs tab and reset counter interval and nbImgs
+    cmpt = 0;
+    nbImgs = nbImgsEachYear[yearChoose]
+    Images = []
+    interval = (playerPlay.duration * 1000) / nbImgs;   // NE MARCHE PAS :/
+    console.log(interval);
     //generate meteorites and sort them
-    setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
-    //Images.sort((a, b) => a.conpareSize(b));
+    imageSpawner = setInterval(() => generateImg(), interval) // Draws 1 meteorit every x second
+    Images.forEach(img => img.setSrc(img.type))
 })
 
 //PARALLAX-------------------------------------------------------------------------------------------------
@@ -130,25 +148,25 @@ const ctx = document.querySelector('canvas').getContext('2d');
 ctx.canvas.height = 384
 ctx.canvas.width = 1519
 
-let nbImgs = getMax();
-let Images = [];
-const imgHeight = 310 / 3;
-const imgWidth = 324 / 3;
+let nbImgsEachYear = getNbMet()
+let nbImgs = nbImgsEachYear[yearChoose]
+let Images = []
+const imgHeight = 310 / 3
+const imgWidth = 324 / 3
 
 // interval of each meteorite drawing
-let interval = 60000 / nbImgs; //length of song divided by de number of meteorite
+let interval = (playerPlay.duration * 1000) / nbImgs; //length of song divided by de number of meteorite
 
 //generate meteorites and sort them
-let imageSpawner = setInterval(() => generateImg(), interval); // Draws 1 meteorit every x second 
-
-//Images.sort((a, b) => a.conpareSize(b));
+let imageSpawner = setInterval(() => generateImg(), interval) // Draws 1 meteorit every x second 
+Images.forEach(img => img.setSrc(img.type))
 
 MainLoop.setSimulationTimestep(1000 / 60);
 MainLoop.setUpdate(dt => {
     for (let Img of Images) {
         Img.move(dt)
     }
-});
+})
 
 MainLoop.setDraw(() => {
     ctx.canvas.height = 384
@@ -156,13 +174,13 @@ MainLoop.setDraw(() => {
     for (let Img of Images) {
         Img.draw(ctx)
     }
-});
+})
 
 MainLoop.setEnd((fps, panic) => {
     if (panic) console.log('panic');
 })
 
-MainLoop.start();
+MainLoop.start()
 
 
 let cmpt = 0;
@@ -175,8 +193,11 @@ function generateImg() {
     Images[cmpt] = new Imgs({
         x: random.getRandomInt(500, ctx.canvas.width),
         y: -100,
+        type: MaterialByYear[cmpt].Type, //assign a type to the meteorite
         width: Math.round(imgWidth / randDenominateur),
         height: Math.round(imgHeight / randDenominateur),
+  
     })
+    Images[cmpt].setSrc(Images[cmpt].type)
     cmpt++;
 }

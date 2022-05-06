@@ -35,7 +35,6 @@ function playSong(year) {
 
     //replace song url in the HTML dataset
     audioPlayer.src = url + songOfTheYear[0].url
-    console.log(audioPlayer.src)
 
     //-------------------------------------------------------------------
     //use function to load and play music
