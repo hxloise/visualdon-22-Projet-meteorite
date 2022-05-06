@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <title>Meteorite landings from 2006 to 2016</title>
 
-    <!-- Fonts google pour les icônes et la police par défaut -->
+    <!-- Fonts google for icones and fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap" />
 
-    <!-- Lien vers le fichier manifest pour la PWA -->
+    <!-- Link for file manifest for PWA -->
     <link rel="manifest" href="/manifest.webmanifest" />
-
 </head>
 
 <body>
@@ -29,52 +28,68 @@
                 <option value="2012">2012</option>
             </select>
         </div>
+        <!-- API youtube, on vient renplacer data video par l'url dan notre tableau 
+            <div data-video="VIDEO_ID" data-autoplay="0" data-loop="1" id="youtube-audio"></div>
+            <script src="https://www.youtube.com/iframe_api"></script>
+            <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>-->
 
+        <!-- Lecteur de musique. Précédent/play-stop/suivant -->
+
+        <div id="player-controls">
+            <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur précédent -->
+            <button type="button" class="player-control player-control-small" id="player-control-previous">
+                <span class="material-icons">skip_previous</span>
+            </button>
+
+            <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur play/pause -->
+            <!-- <button type="button" class="player-control" id="player-control-play">
+                    <span class="material-icons">play_arrow</span>
+                </button> -->
+
+            <audio id="audio-player" controls>
+                <source src="./music/DanielPowter-BadDay.mp3" type="audio/mpeg">
+            </audio>
+
+            <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur suivant -->
+            <button type="button" class="player-control player-control-small" id="player-control-next">
+                <span class="material-icons">skip_next</span>
+            </button>
+        </div>
+
+        <!-- Espace pour lecteur de musique + informations -->
         <div id="player">
-            <audio id="audio-player"></audio>
+            <!-- Audio doit être dans une balise, contenir une source (qui doit se trouver dans le répértoire public ! ) -->
+
+
+            <!-- Template pour affichage des infos de musique -->
             <div id="player-infos">
                 <div id="player-infos-song">
                     <span class="material-icons">music_note</span>
                     <!-- utiliser l'id de cet élément pour changer le titre de la chanson -->
-                    <span id="player-infos-song-title">
+                    <span id="player-infos-song-title">Bad day
                     </span>
                 </div>
 
                 <div id="player-infos-artist">
                     <span class="material-icons">person</span>
                     <!-- utiliser l'id de cet élément pour changer le nom de l'artiste -->
-                    <span id="player-infos-artist-name">
+                    <span id="player-infos-artist-name">Daniel Powter
                     </span>
                 </div>
             </div>
-
-            <!-- API youtube, on vient renplacer data video par l'url dan notre tableau 
-            <div data-video="VIDEO_ID" data-autoplay="0" data-loop="1" id="youtube-audio"></div>
-            <script src="https://www.youtube.com/iframe_api"></script>
-            <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>-->
-
-            <div id="player-controls">
-                <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur précédent -->
-                <button type="button" class="player-control player-control-small" id="player-control-previous">
-                    <span class="material-icons">skip_previous</span>
-                </button>
-                <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur play/pause -->
-                <button type="button" class="player-control" id="player-control-play">
-                    <span class="material-icons">play_arrow</span>
-                </button>
-                <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur suivant -->
-                <button type="button" class="player-control player-control-small" id="player-control-next">
-                    <span class="material-icons">skip_next</span>
-                </button>
-            </div>
         </div>
+
     </div>
-    <div id="separateur"></div>
+
+    <!-- <div id="separateur"></div> -->
+
+    <!-- Milieu de page, contenant les météorites -->
     <section id="meteorites">
         <canvas></canvas>
     </section>
-    <div class=stats>
 
+    <!-- Bas de page, contenant les affichages de données -->
+    <div class=stats>
         <section id="StatisticsDonut">
         </section>
 
@@ -84,7 +99,6 @@
         <section id="Statistics">
         </section>
     </div>
-
 
 </body>
 

@@ -12,7 +12,7 @@ const label = document.getElementById('year-select')
 const svg = document.getElementById('Statistics')
 const svgDonut = document.getElementById('StatisticsDonut')
 const svgMap = document.getElementById('Map')
-const playerPlay = document.querySelector('#player-control-play')
+const playerPlay = document.querySelector('#audio-player')
 //year chosen by user 
 let yearChoose = getYear()
 
@@ -31,7 +31,7 @@ getMap(allMeteorites)
 const dataClassified = getMatiere()
 
 // console.log(allMeteorites)
-let test
+
 label.addEventListener('change', function () {
     yearChoose = getYear()
     // get music infos

@@ -142,7 +142,7 @@ export function getDonut(data, yearChosen) {
 
     //scale color
     const color = d3.scaleOrdinal()
-        .range(["#F27405", "#D93D04", "#072040"])
+        .range(["#ffd97d", "#D93D04", "#072040"])
 
     //array of data return array of objects contains details about each arc angle
     const pie = d3.pie()
