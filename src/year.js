@@ -85,7 +85,8 @@ export function getNbMet() {
     meteoriteData["2011"] = compteur2011
     meteoriteData["2012"] = compteur2012
 
-    return meteoriteData
+    // return meteoriteData
+    return meteorites
 }
 
 export function getMatiere(){

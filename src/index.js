@@ -28,11 +28,11 @@ playerPlay.addEventListener('click', () => {
 })
 
 //draw data default year
-getGraph(getNbMet(), yearChoose, getMax())
+getGraph(getNbMet(), yearChoose, getMax(), getMatiere())
 //draw donut
 getDonut(getMatiere(), yearChoose)
 //draw map
-getMap(allMeteorites)
+getMap(allMeteorites,yearChoose)
 
 // get the material type of the meteorites
 const dataClassified = getMatiere()
@@ -45,10 +45,11 @@ label.addEventListener('change', function () {
 
     // play previous song
     playSong(yearChoose)
-
+    document.querySelector("#totalMasse").replaceChildren()
+    document.querySelector("#totalNb").replaceChildren()
     svg.replaceChildren()
     //draw data 
-    getGraph(getNbMet(), yearChoose, getMax())
+    getGraph(getNbMet(), yearChoose, getMax(), getMatiere())
 
     //draw donut
     svgDonut.replaceChildren()
@@ -56,7 +57,7 @@ label.addEventListener('change', function () {
 
     //draw map
     svgMap.replaceChildren()
-    getMap(allMeteorites)
+    getMap(allMeteorites,yearChoose)
 
     // clear interval and canevas on change
     clearInterval(imageSpawner)
@@ -77,11 +78,12 @@ label.addEventListener('change', function () {
 
 playerPrev.addEventListener('click', function () {
     yearChoose = getYear()
-    // get music infos
-    playPreviousSong()
+
     svg.replaceChildren()
+    document.querySelector("#totalMasse").replaceChildren()
+    document.querySelector("#totalNb").replaceChildren()
     //draw data 
-    getGraph(getNbMet(), yearChoose, getMax())
+    getGraph(getNbMet(), yearChoose, getMax(), getMatiere())
 
     //draw donut
     svgDonut.replaceChildren()
@@ -89,7 +91,7 @@ playerPrev.addEventListener('click', function () {
 
     //draw map
     svgMap.replaceChildren()
-    getMap(allMeteorites)
+    getMap(allMeteorites,yearChoose)
 
     // clear interval and canevas on change
     clearInterval(imageSpawner)
@@ -109,12 +111,12 @@ playerPrev.addEventListener('click', function () {
 
 playerNext.addEventListener('click', function () {
     yearChoose = getYear()
-    // play next song
-    playNextSong()
 
+    document.querySelector("#totalNb").replaceChildren()
+    document.querySelector("#totalMasse").replaceChildren()
     svg.replaceChildren()
     //draw data 
-    getGraph(getNbMet(), yearChoose, getMax())
+    getGraph(getNbMet(), yearChoose, getMax(), getMatiere())
 
     //draw donut
     svgDonut.replaceChildren()
@@ -122,7 +124,7 @@ playerNext.addEventListener('click', function () {
 
     //draw map
     svgMap.replaceChildren()
-    getMap(allMeteorites)
+    getMap(allMeteorites,yearChoose)
 
     // clear interval and canevas on change
     clearInterval(imageSpawner)

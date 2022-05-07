@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HEIG-VD | VisualDon</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="typing-demo">
+            This is a data visualisation website.
+        </div>
+    </div>
+    <button class="custom-btn btn-3"><span>Let's go</span></button>
+    <!-- Party two -->
+    <div class="container hidden lineUp">
+        <div class="title hidden lineUp">
+            <h1>What about meteorites that have fallen to earth ?</h1>
+            <p>In this vizualisation, you can see some informations about all the meteorites during a year. In addition, there's the most listened music of that year.</p>
+        </div>
+        <button class="custom-btn btn-3 test hidden" ><span>Let's go</span></button>
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    const btn = document.querySelector(".custom-btn")
+    const div = document.querySelector(".wrapper") 
+
+    btn.addEventListener('click', () => {
+        document.body.removeChild(btn)
+        document.body.removeChild(div)
+
+        document.querySelector('.title').classList.remove('hidden')
+        // document.querySelector('.description').classList.remove('hidden')
+        document.querySelector('.container').classList.remove('hidden')
+        console.log(Test)
+    })
+
+
+</script>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* dégradé commence en bas à droite. Le dégradé est défini par un axe */
+        /* la fonction linear-gradient dessine une suite de ligne colorée, perpendiculaire à l'axe du dégradé */
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        /* transition entre deux états. Définti par les propriétés de l'animation et par un ensemble d'étapes (keyframe) */
+        animation: gradient 15s ease infinite;
+        height: 100%;
+    }
+
+    .container{
+        height: 100%;
+        width: 100%;
+        margin-top: 12rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+
+    }
+    /* .title {
+        margin-left: 3rem;
+    } */
+
+    .hidden {
+        display: none;
+    }
+
+    /* .description {
+        background-color: black;
+        opacity: 50%;
+        border-radius: 1rem;
+        margin-right: 3rem;
+        padding-left: 1rem;
+    } */
+
+    /* utiliser le nom de l'animation (ici gradient) */
+    @keyframes gradient {
+
+        /* état initial de l'animation */
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .wrapper {
+        /*This part is important for centering*/
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        margin-top: 18rem;
+    }
+
+    .typing-demo {
+        width: 37ch;
+        /* stps découpe en n étapes l'animation */
+        /* blink est une deuxième animation qui permet de faire le curseur */
+        animation: typing 3s steps(37), blink .5s ease infinite;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid;
+        font-family: monospace;
+        font-size: 2em;
+        color: white;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0
+        }
+    }
+
+    @keyframes blink {
+        50% {
+            border-color: transparent
+        }
+    }
+
+    button {
+        margin: 20px;
+        /* animation-delay: 10s; */
+        opacity: 100%;
+        animation: visibility 4s;
+    }
+
+    @keyframes visibility {
+        0% {
+            opacity: 0%;
+        }
+
+        80% {
+            opacity: 0%;
+        }
+
+        100% {
+            opacity: 100%;
+        }
+    }
+
+    .custom-btn {
+        width: 130px;
+        height: 40px;
+        color: #fff;
+        padding: 10px 25px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+    }
+
+    .btn-3 {
+        background-color: black;
+        width: 130px;
+        height: 40px;
+        line-height: 42px;
+        padding: 0;
+        border: none;
+
+    }
+
+    .btn-3 span {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .btn-3:before,
+    .btn-3:after {
+        position: absolute;
+        content: "";
+        right: 0;
+        top: 0;
+        background: black;
+
+        transition: all 0.3s ease;
+    }
+
+    .btn-3:before {
+        height: 0%;
+        width: 2px;
+
+    }
+
+    .btn-3:after {
+        width: 0%;
+        height: 2px;
+
+    }
+
+    .btn-3:hover {
+        opacity: 100%;
+        background: transparent;
+        box-shadow: none;
+
+    }
+
+    .btn-3:hover:before {
+        opacity: 100%;
+        height: 100%;
+
+    }
+
+    .btn-3:hover:after {
+        opacity: 100%;
+        width: 100%;
+
+    }
+
+    .btn-3 span:hover {
+        color: black;
+    }
+
+    .btn-3 span:before,
+    .btn-3 span:after {
+        position: absolute;
+        content: "";
+        left: 0;
+        bottom: 0;
+        background-color: black;
+        transition: all 0.3s ease;
+    }
+
+    .btn-3 span:before {
+        width: 2px;
+        height: 0%;
+    }
+
+    .btn-3 span:after {
+        width: 0%;
+        height: 2px;
+    }
+
+    .btn-3 span:hover:before {
+        height: 100%;
+    }
+
+    .btn-3 span:hover:after {
+        width: 100%;
+    }
+
+    h1 {
+        width: 40rem;
+        color: white;
+        font-family: 'Lato', sans-serif;
+        font-size: 3rem;
+    }
+    p{
+        width: 40rem;
+        color: white;
+        font-family: 'Lato', sans-serif;
+        font-size: 1.7rem;
+    }
+    /* lineup class and keyframes */
+.lineUp {
+  animation: 2s anim-lineUp ease-out;
+}
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+   
+</style>

@@ -18,6 +18,43 @@ body {
   background-color: #00030D;
   position: relative;
 }
+#txtStat{
+  width: 80%;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 0.5rem;
+
+}
+
+#totalNb{
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  border-width: 0px 0px 0.1rem 0px;
+  border-style: solid;
+  border-color: #323159;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+#totalMasse{
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  border-width: 0px 0px 0.1rem 0px;
+  border-style: solid;
+  border-color: #323159;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+#totalMass{
+  height: 100%;
+  width: 100%;
+  background-color: beige;
+}
 
 .material-icons {
     vertical-align: middle;
@@ -84,7 +121,7 @@ body {
   /* background-color: #C3C5F5; */
   /* opacity: 0.5; */
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
   border-radius: 1.7rem;
   height: 100%;
 }
@@ -98,11 +135,9 @@ body {
 }
 #MapVis{
   height: 100%;
-  width: 50%;
+  width: 100%;
 }
-#Statistics{ 
-  padding-top: 1rem;
-}
+
 #graph-meteorite-numbers{
 display: flex;
 justify-content: row;
@@ -128,11 +163,21 @@ p{
   margin-right: 2rem;
   /* transform: rotate(45deg); */
 }
-text{
+#tbM{
+  margin: 0%;
+  text-align: center;
+  font-size: 0.9rem;
+}
+#tbNb{
+  margin: 0%;
+  text-align: center;
+  font-size: 0.9rem;
+}
+/* text{
   color: white; 
   opacity: 0.3rem;
   font-size: 2rem;
-}
+} */
 
 button {
   color: white;
@@ -192,7 +237,7 @@ button:hover, span:hover{
 
 div.tooltip-donut {
   position: absolute;
-  text-align: center;
+  text-align: left;
   padding: .5rem;
   background: #00030D;
   color: white;
@@ -209,16 +254,25 @@ div.tooltip-donut {
   /* visibility: hidden; */
 }
 
-#Map {
+#Titlel{
+  margin-bottom: 1rem;
+  opacity: 60%;
+}
+
+.tick{
+  font-size: 1rem;
+}
+
+/* #Map {
 	animation-name: backgroundColorPalette;
 	animation-duration: 3s;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 	animation-timing-function: linear; 
 	/* linear is enabled default, it’s not necessary to add it make it work but it can make your code more expressive */
-}
+/* }
 
-@keyframes backgroundColorPalette {
+/* @keyframes backgroundColorPalette {
 	0% {
 		background-color: #ffd97d;
 	}
@@ -234,4 +288,4 @@ div.tooltip-donut {
 	100% {
 		color: #ff9b85;
 	
-} }  
+} }   */
