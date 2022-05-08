@@ -1,6 +1,7 @@
 /* Packages */
 @import "~normalize.css/normalize.css";
 
+
 *{
   font-family: Arial, Helvetica, sans-serif;
   padding: 0;
@@ -106,6 +107,12 @@ body {
 #meteorites{
   width: 100%;
   height: 100%;
+}
+canvas{
+  background-image: url('../../public/img/sunrise2.jpg');
+  background-image: -moz-linear-gradient(orange,purple,darkblue,);
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
 }
 
 .stats{

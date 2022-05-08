@@ -16,6 +16,7 @@ const svgMap = document.getElementById('Map')
 const playerPlay = document.querySelector('#audio-player')
 const playerPrev = document.querySelector('#player-control-previous')
 const playerNext = document.querySelector('#player-control-next')
+
 //class for changing color of a PNG image
 const tweens = new Tweens();
 
@@ -37,6 +38,7 @@ getMap(allMeteorites,yearChoose)
 // get the material type of the meteorites
 const dataClassified = getMatiere()
 let MaterialByYear = dataClassified.filter(type => type.year == yearChoose)
+console.log(MaterialByYear);
 
 
 label.addEventListener('change', function () {
@@ -157,7 +159,8 @@ const imgHeight = 310 / 3
 const imgWidth = 324 / 3
 
 // interval of each meteorite drawing
-let interval = (playerPlay.duration * 1000) / nbImgs; //length of song divided by de number of meteorite
+let interval = (parseFloat(playerPlay.duration) * 1000) / nbImgs; //length of song divided by de number of meteorite
+console.log(interval);
 
 //generate meteorites and sort them
 let imageSpawner = setInterval(() => generateImg(), interval) // Draws 1 meteorit every x second 
@@ -193,7 +196,7 @@ function generateImg() {
     }
     const randDenominateur = random.getRandomInt(1, 3);
     Images[cmpt] = new Imgs({
-        x: random.getRandomInt(500, ctx.canvas.width),
+        x: random.getRandomInt(100, ctx.canvas.width+350),
         y: -100,
         type: MaterialByYear[cmpt].Type, //assign a type to the meteorite
         width: Math.round(imgWidth / randDenominateur),

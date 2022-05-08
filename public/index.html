@@ -8,7 +8,7 @@
     <!-- Fonts google for icones and fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons" />
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap" />
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;300;400;700&display=swap" />
 
     <!-- Link for file manifest for PWA -->
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -28,24 +28,13 @@
                 <option value="2012">2012</option>
             </select>
         </div>
-        <!-- API youtube, on vient renplacer data video par l'url dan notre tableau 
-            <div data-video="VIDEO_ID" data-autoplay="0" data-loop="1" id="youtube-audio"></div>
-            <script src="https://www.youtube.com/iframe_api"></script>
-            <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>-->
 
         <!-- Lecteur de musique. Précédent/play-stop/suivant -->
-
         <div id="player-controls">
             <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur précédent -->
             <button type="button" class="player-control player-control-small" id="player-control-previous">
                 <span class="material-icons">skip_previous</span>
             </button>
-
-            <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur play/pause -->
-            <!-- <button type="button" class="player-control" id="player-control-play">
-                    <span class="material-icons">play_arrow</span>
-                </button> -->
-
             <audio id="audio-player" controls>
                 <source src="./music/DanielPowter-BadDay.mp3" type="audio/mpeg">
             </audio>
@@ -85,7 +74,7 @@
 
     <!-- Milieu de page, contenant les météorites -->
     <section id="meteorites">
-        <canvas></canvas>
+        <canvas style="background-image: url('./img/sunrise2.jpg');"></canvas>
     </section>
 
     <div id="txtStat">

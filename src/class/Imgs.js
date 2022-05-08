@@ -46,7 +46,7 @@ export default class Imgs {
       case 'Iron':
         this.src = imgIron
         break
-      case 'StoneyIron':
+      case 'StonyIron':
         this.src = imgStonyIron
         break
     }
