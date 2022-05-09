@@ -8,7 +8,7 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
         .attr('id', "Titlel")
         .text('Distribution of mass by type')
 
-    //data need to be sort
+    //data need to be  sort
     const nbM = data.filter(m => m.year == yearChosen).length
     let data_filter = data.filter(m => m.year == yearChosen)
 
@@ -55,7 +55,7 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
     // set the dimensions and margins of the graph
     const margin = { top: 20, right: 30, bottom: 40, left: 90 },
         width = 350 - margin.left - margin.right,
-        height = 270 - margin.top - margin.bottom;
+        height = 300 - margin.top - margin.bottom;
 
     //add div to section statistic
     d3.select('#Statistics')
@@ -293,7 +293,7 @@ export function getMap(allMet, yearChosen) {
 
     //define margin
     const width = 400
-    const height = 250
+    const height = 300
     //const margin = {top:20, right:20, bottom:30, left:50}
 
     //add container for svg
@@ -365,7 +365,6 @@ export function getMap(allMet, yearChosen) {
         }
     });
 
-    
     //Draw map, data format Geojson
     d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then(function (d) {
         svg.append('g')
@@ -402,7 +401,7 @@ export function getMap(allMet, yearChosen) {
                     .duration('50')
                     .style("opacity", 1);
 
-                let txt = i.name
+                let txt = "Location: " + i.name
                 Desc.html(txt)
                     .style("left", (d.clientX + 10) + "px")
                     .style("top", (d.clientY - 15) + "px");
