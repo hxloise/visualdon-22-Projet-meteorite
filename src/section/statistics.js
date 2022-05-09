@@ -152,9 +152,9 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
             .attr("y", d => y(d.Type))
             .attr("width", d => x(d.MassT))
             .attr("height", y.bandwidth())
-            .attr("fill", "#69b3a2"),
+            .attr("fill", "purple"),
             update => update
-                .attr("fill", "#69b3a2"),
+                .attr("fill", "#purple"),
             exit => exit
                 .remove()
         ).on("mouseover", function (d, i) {
@@ -228,7 +228,7 @@ export function getDonut(data, yearChosen) {
 
     //scale color
     const color = d3.scaleOrdinal()
-        .range(["#69b3a2", "#ffd97d", "#072040"])
+        .range(["purple", "orange", "darblue"])
     // color maybe used : 69b3a2 D93D04
 
     //array of data return array of objects contains details about each arc angle
@@ -374,8 +374,8 @@ export function getMap(allMet, yearChosen) {
             .join("path")
             .attr("d", path.projection(projection))
             .attr("id", function (d) { return d.properties.name; })
-            .attr("fill", "#b8b8b8")
-            .style("opacity", .3)
+            .attr("fill", "purple")
+            .style("opacity", .6)
 
         // select the tooltip
         const Desc = d3.select(".tooltip-donut")
@@ -388,8 +388,8 @@ export function getMap(allMet, yearChosen) {
             .attr("cy", d => projection([d.long, d.lat])[1])
             .attr("r", 3)
             .attr("class", "circle")
-            .style("fill", "69b3a2")
-            .attr("stroke", "#69b3a2")
+            .style("fill", "purple")
+            .attr("stroke", "orange")
             .attr("stroke-width", 3)
             .attr("fill-opacity", .4)
             .on("mouseover", function (d, i) {

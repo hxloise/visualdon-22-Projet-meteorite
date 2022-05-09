@@ -30,7 +30,7 @@ export function getMax() {
 
 //--------------------------------------------------------------------------------------------------------
 
-export function getNbMet() {
+export function getNbMet(getCompteur = false) {
     //sort by year
     allMeteorites.sort((a, b) => a.year - b.year);
     let meteorites = []
@@ -85,8 +85,7 @@ export function getNbMet() {
     meteoriteData["2011"] = compteur2011
     meteoriteData["2012"] = compteur2012
 
-    // return meteoriteData
-    return meteorites
+    return getCompteur ? meteoriteData : meteorites;
 }
 
 export function getMatiere(){

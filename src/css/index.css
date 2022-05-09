@@ -7,7 +7,7 @@
   padding: 0;
   margin: 0;
   box-sizing : border-box;
-  color:#D8D9F2;
+  color:white;
 }
 
 body {
@@ -34,20 +34,14 @@ body {
 #totalNb{
   height: 100%;
   width: 100%;
-  justify-content: center;
-  border-width: 0px 0px 0.1rem 0px;
-  border-style: solid;
-  border-color: #323159;
+  justify-content: left;
   margin-right: 2rem;
   margin-left: 2rem;
 }
 #totalMasse{
   height: 100%;
   width: 100%;
-  justify-content: center;
-  border-width: 0px 0px 0.1rem 0px;
-  border-style: solid;
-  border-color: #323159;
+  justify-content: left;
   margin-right: 2rem;
   margin-left: 2rem;
 }
@@ -66,14 +60,16 @@ body {
   display: flex;
   justify-content: space-between;
   /* background-color: #00030D; */
-  border-width:0px 0px 0.1vh 0px;
-  border-style:solid;
-  border-color:white;
 }
 .year{
   width: 25%;
   padding: 1rem;
-  font-size: large;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50%;
+}
+.year label{
+  margin-right: 1rem;
 }
 #player{
   /* margin-left: 30rem; */
@@ -107,13 +103,17 @@ body {
 #meteorites{
   width: 100%;
   height: 100%;
-}
-canvas{
   background-image: url('../../public/img/sunrise2.jpg');
   background-image: -moz-linear-gradient(orange,purple,darkblue,);
   background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; 
+  background-size:cover; 
 }
+
+canvas{
+  width: 100%;
+  height: calc(100vh - 400px);
+} 
+
 
 .stats{
   width: 80%;
@@ -152,9 +152,10 @@ justify-content: row;
 
 #year-select{
   width: 10rem;
-  height: 2rem;
-  font-size: small;
-  padding: 0.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.4rem;
 }
 
 select{
@@ -173,12 +174,12 @@ p{
 #tbM{
   margin: 0%;
   text-align: center;
-  font-size: 0.9rem;
+  
 }
 #tbNb{
   margin: 0%;
   text-align: center;
-  font-size: 0.9rem;
+  
 }
 /* text{
   color: white; 
@@ -263,7 +264,7 @@ div.tooltip-donut {
 
 #Titlel{
   margin-bottom: 1rem;
-  opacity: 60%;
+  font-weight: bold;
 }
 
 .tick{
