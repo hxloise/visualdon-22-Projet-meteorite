@@ -1,13 +1,13 @@
 {
-  "name": "02-intro-d3",
+  "name": "VisualDon",
   "version": "1.0.0",
-  "description": "Exercice 2",
+  "description": "Projet",
   "main": "src/index.js",
   "scripts": {
     "build": "babel src -d lib",
     "start": "webpack-dev-server"
   },
-  "author": "Noemi Romano",
+  "author": "Jasmine Molano & Héloïse Cuche ",
   "license": "ISC",
   "dependencies": {
     "d3": "^7.3.0",
