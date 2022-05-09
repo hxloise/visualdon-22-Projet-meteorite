@@ -19,6 +19,7 @@ body {
   background-color: #00030D;
   position: relative;
 }
+
 #txtStat{
   width: 80%;
   height: 2rem;
@@ -28,6 +29,9 @@ body {
   align-items: center;
   align-content: center;
   margin-bottom: 0.5rem;
+  /* border: solid white;
+  border-width:0px 0px 0.01rem 0px; */
+  opacity: 50%;
 
 }
 
@@ -48,7 +52,6 @@ body {
 #totalMass{
   height: 100%;
   width: 100%;
-  background-color: beige;
 }
 
 .material-icons {
@@ -111,7 +114,7 @@ body {
 
 canvas{
   width: 100%;
-  height: calc(100vh);
+  height: calc(100vh );
 } 
 
 
