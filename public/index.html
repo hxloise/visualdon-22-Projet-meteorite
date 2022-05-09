@@ -15,44 +15,18 @@
         <div class="typing-demo">
             This is a data visualisation website.
         </div>
-
-        <!-- Lecteur de musique. Précédent/play-stop/suivant -->
-        <div id="player-controls">
-            <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur précédent -->
-            <button type="button" class="player-control player-control-small" id="player-control-previous">
-                <span class="material-icons">skip_previous</span>
-            </button>
-            <audio id="audio-player" preload="auto" autoplay="false" controls>
-                <source src="./music/DanielPowter-BadDay.mp3" type="audio/mpeg">
-            </audio>
-
-            <button type="button" class="player-control player-control-small" id="player-control-next">
-                <span class="material-icons">skip_next</span>
-            </button>
+    </div>
+    <button class="custom-btn btn-3"><span>Let's go</span></button>
+    <!-- Party two -->
+    <div class="container hidden lineUp">
+        <div class="title hidden lineUp">
+            <h1>What about meteorites that have fallen to earth ?</h1>
+            <p>In this vizualisation, you can see some informations about all the meteorites during a year. In addition, there's the most listened music of that year.</p>
         </div>
         <button onclick="window.location.href = 'visualisation.html'" class="custom-btn btn-3 test hidden" ><span>Let's go</span></button>
     </div>
 
-        <!-- Espace pour lecteur de musique + informations -->
-        <div id="player">
-
-            <!-- Affichage des infos de musique -->
-            <div id="player-infos">
-                <div id="player-infos-song">
-                    <span class="material-icons">music_note</span>
-                    <!-- utiliser l'id de cet élément pour changer le titre de la chanson -->
-                    <span id="player-infos-song-title">Bad day
-                    </span>
-                </div>
-
-                <div id="player-infos-artist">
-                    <span class="material-icons">person</span>
-                    <!-- utiliser l'id de cet élément pour changer le nom de l'artiste -->
-                    <span id="player-infos-artist-name">Daniel Powter
-                    </span>
-                </div>
-            </div>
-        </div>
+</body>
 
 </html>
 <script>
