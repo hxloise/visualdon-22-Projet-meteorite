@@ -35,11 +35,10 @@
             <button type="button" class="player-control player-control-small" id="player-control-previous">
                 <span class="material-icons">skip_previous</span>
             </button>
-            <audio id="audio-player" controls>
+            <audio id="audio-player" preload="auto" autoplay="false" controls>
                 <source src="./music/DanielPowter-BadDay.mp3" type="audio/mpeg">
             </audio>
 
-            <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur suivant -->
             <button type="button" class="player-control player-control-small" id="player-control-next">
                 <span class="material-icons">skip_next</span>
             </button>
@@ -47,10 +46,8 @@
 
         <!-- Espace pour lecteur de musique + informations -->
         <div id="player">
-            <!-- Audio doit être dans une balise, contenir une source (qui doit se trouver dans le répértoire public ! ) -->
 
-
-            <!-- Template pour affichage des infos de musique -->
+            <!-- Affichage des infos de musique -->
             <div id="player-infos">
                 <div id="player-infos-song">
                     <span class="material-icons">music_note</span>
@@ -69,8 +66,6 @@
         </div>
 
     </div>
-
-    <!-- <div id="separateur"></div> -->
 
     <!-- Milieu de page, contenant les météorites -->
     <section id="meteorites" style="background-image: url('./img/sunrise2.jpg');">
