@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HEIG-VD | VisualDon</title>
+
+    <!-- Fonts google for icones and fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;300;400;700&display=swap" />
+
+    <!-- Link for file manifest for PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+</head>
+
+<body>
+    <div id="music_player">
+        <div class="year">
+            <label for="year-select">Année</label>
+            <select name="year" id="year-select">
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+            </select>
+        </div>
+
+        <!-- Lecteur de musique. Précédent/play-stop/suivant -->
+        <div id="player-controls">
+            <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur précédent -->
+            <button type="button" class="player-control player-control-small" id="player-control-previous">
+                <span class="material-icons">skip_previous</span>
+            </button>
+            <audio id="audio-player" controls>
+                <source src="./music/DanielPowter-BadDay.mp3" type="audio/mpeg">
+            </audio>
+
+            <!-- utiliser l'id de cet élément pour ajouter un listener pour le click sur suivant -->
+            <button type="button" class="player-control player-control-small" id="player-control-next">
+                <span class="material-icons">skip_next</span>
+            </button>
+        </div>
+
+        <!-- Espace pour lecteur de musique + informations -->
+        <div id="player">
+            <!-- Audio doit être dans une balise, contenir une source (qui doit se trouver dans le répértoire public ! ) -->
+
+
+            <!-- Template pour affichage des infos de musique -->
+            <div id="player-infos">
+                <div id="player-infos-song">
+                    <span class="material-icons">music_note</span>
+                    <!-- utiliser l'id de cet élément pour changer le titre de la chanson -->
+                    <span id="player-infos-song-title">Bad day
+                    </span>
+                </div>
+
+                <div id="player-infos-artist">
+                    <span class="material-icons">person</span>
+                    <!-- utiliser l'id de cet élément pour changer le nom de l'artiste -->
+                    <span id="player-infos-artist-name">Daniel Powter
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div id="separateur"></div> -->
+
+    <!-- Milieu de page, contenant les météorites -->
+    <section id="meteorites" style="background-image: url('./img/sunrise2.jpg');">
+        <canvas ></canvas>
+    </section>
+
+    <div id="txtStat">
+        <div id="totalNb">
+        </div>
+        <div id="totalMasse">
+            <p id="tbM"></p>
+        </div>
+        <div id="totalMasse">
+            <p id="tbM"></p>
+        </div>
+    </div>
+    <!-- Bas de page, contenant les affichages de données -->
+    <div class=stats>
+        
+        <section id="Map">
+        </section>
+
+        <section id="StatisticsDonut">
+        </section>
+        <section id="Statistics">
+        </section>
+         
+    </div>
+    <script defer src="index_bundle.js"></script>
+</body>
+
+
+</html>
