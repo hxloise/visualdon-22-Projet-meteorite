@@ -67,8 +67,7 @@ label.addEventListener('change', function () {
     nbImgs = nbImgsEachYear[yearChoose]
     Images = []
     interval = (playerPlay.duration * 1000) / nbImgs; 
-    console.log(playerPlay.duration);
-
+    console.log(nbImgs);
     //generate meteorites and sort them
     imageSpawner = setInterval(() => generateImg(), interval) // Draws 1 meteorit every x second 
     Images.forEach(img => img.setSrc(img.type))
@@ -137,7 +136,7 @@ playerNext.addEventListener('click', function () {
     nbImgs = nbImgsEachYear[yearChoose]
     Images = []
     interval = (playerPlay.duration * 1000) / nbImgs;   // NE MARCHE PAS :/
-    console.log(playerPlay.duration);
+
     //generate meteorites and sort them
     imageSpawner = setInterval(() => generateImg(), interval) // Draws 1 meteorit every x second
     Images.forEach(img => img.setSrc(img.type))
@@ -158,20 +157,7 @@ const imgHeight = 310 / 3
 const imgWidth = 324 / 3
 
 // interval of each meteorite drawing
-let interval 
-//length of song divided by de number of meteorite
-function setInterval() {
-    interval = (playerPlay.duration* 1000) / nbImgs
-    return interval
-}
-function getDuration(src, interval) {
-    var audio = new Audio();
-    $(audio).on("loadedmetadata", function(){
-        interval = audio.duration;
-    });
-    audio.src = src;
-    return  interval
-}
+let interval = (playerPlay.duration* 1000) / nbImgs; //length of song divided by de number of meteorite
 
 //generate meteorites and sort them
 let imageSpawner = setInterval(() => generateImg(), interval) // Draws 1 meteorit every x second 
