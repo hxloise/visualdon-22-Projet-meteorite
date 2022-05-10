@@ -9,7 +9,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
     name: 'browser',
     mode: 'development',
-    entry: './src/index.js',
+    entry: ["regenerator-runtime/runtime.js", './src/index.js'],
     output: {
         path: path.resolve('dist'),
         filename: 'index_bundle.js'
