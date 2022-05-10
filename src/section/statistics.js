@@ -2,12 +2,6 @@ import * as d3 from 'd3'
 import { filter } from 'd3'
 
 export function getGraph(fallenData, yearChosen, maxM, data) {
-    //add description of the section
-    d3.select('#Statistics')
-        .append('p')
-        .attr('id', "Titlel")
-        .text('Distribution of mass by type')
-
     //data need to be  sort
     const nbM = data.filter(m => m.year == yearChosen).length
     let data_filter = data.filter(m => m.year == yearChosen)
@@ -80,15 +74,19 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
         return tab
     }
 
-    //add text of bottom section
-    // d3.select('#bigNb').append('h1').text(nbM)
+    //add text in bottom section
     d3.select("#totalNb")
-        .append('p').attr("id", "tbNb").text("Total of meteorites | " + nbM)
+        .append('p').attr("id", "tbNb").text("Total of meteorites").append('h2').text(nbM)
 
     const totM = totMass()
     d3.select("#totalMasse")
-        .append('p').attr("id", "tbM").text("Total Mass [g] | " + MassMaxYear.toFixed(2))
+        .append('p').attr("id", "tbM").text("Total Mass [g]").append('h2').text(MassMaxYear.toFixed(2))
 
+    const percent = (compteurStony * 100 / nbM).toFixed(2)
+    d3.select('#totalPercent').append('p').attr("id", "percent").text("Percent of Stony Meteorite").append('h2').text(percent + "%")
+    
+    
+    
     //add svg in div
     const svg = d3.select("#graph-meteorite-numbers")
         .append("svg")
@@ -155,7 +153,7 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
             .attr("height", y.bandwidth())
             .attr("fill", "purple"),
             update => update
-                .attr("fill", "#purple"),
+                .attr("fill", "purple"),
             exit => exit
                 .remove()
         ).on("mouseover", function (d, i) {
@@ -188,12 +186,6 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
 //--------------------------------------------------------------------------------------------------------
 
 export function getDonut(data, yearChosen) {
-    //add description of the section
-    d3.select('#StatisticsDonut')
-        .append('p')
-        .attr('id', "Titlel")
-        .text('Fell or found')
-
     //just filter one more time the data..
     const data_filter = data.filter(m => m.year == yearChosen)
     //get fell meteorite
@@ -256,7 +248,8 @@ export function getDonut(data, yearChosen) {
         )
         .attr('fill', d => color(d.data[0]))
         .style("opacity", 1)
-        .on("mouseover", function (d, i) {
+        .on('mouseover', function (d, i) {
+            console.log("test", d.clientX)
             d3.select(this).transition()
                 .duration('50')
                 .style("opacity", 0.5);
@@ -264,7 +257,7 @@ export function getDonut(data, yearChosen) {
             Desc.transition()
                 .duration('50')
                 .style("opacity", 1);
-
+            
             let txt = i.value
             Desc.html(txt)
                 .style("left", (d.clientX + 10) + "px")
@@ -286,18 +279,13 @@ export function getDonut(data, yearChosen) {
 //--------------------------------------------------------------------------------------------------------
 
 export function getMap(allMet, yearChosen) {
-    //add description of the section in html part
-    d3.select('#Map')
-        .append('h1')
-        .text('Meteorite location')
-    
     // d3.select('#Map')
     //     .append('p')
     //     .attr('id', "Titlel")
     //     .text('Meteorite location')
          
     //define margin
-    const width = document.getElementById('Map').offsetWidth/2
+    const width = document.getElementById('Map').offsetWidth    
     const height = 400
     //const margin = {top:20, right:20, bottom:30, left:50}
 
@@ -385,7 +373,7 @@ export function getMap(allMet, yearChosen) {
         // select the tooltip
         const Desc = d3.select(".tooltip-donut")
 
-        // Add circles:
+        // Add circles: 
         svg.selectAll("myCircles")
             .data(points)
             .join("circle")
@@ -406,10 +394,10 @@ export function getMap(allMet, yearChosen) {
                     .duration('50')
                     .style("opacity", 1);
 
-                let txt = "Location: " + i.name
+                let txt = i.name
                 Desc.html(txt)
                     .style("left", (d.clientX + 10) + "px")
-                    .style("top", (d.clientY - 15) + "px");
+                    .style("top", (d.clientY + 10) + "px");
 
             })
             .on("mouseleave", function (d, i) {

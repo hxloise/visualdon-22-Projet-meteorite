@@ -14,20 +14,20 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
   align-items: center;
   background-color: #00030D;
   position: relative;
 }
 
 #txtStat {
-  width: 80%;
-  height: 15%;
+  width: 100%;
+  height: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   /* align-items: center;
   align-content: center; */
+  margin-top: 2rem; 
   margin-bottom: 5rem;
 
 }
@@ -48,6 +48,15 @@ body {
   margin-left: 2rem;
 }
 
+#totalPercent {
+  height: 50%;
+  width: 25%;
+  justify-content: left;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+
 .material-icons {
   vertical-align: middle;
 }
@@ -60,6 +69,8 @@ body {
   margin-top: .2rem;
   border-radius: 2rem;
   background-color: rgba(0, 0, 0, 0.6);
+  /* Just put a big one random number */
+  z-index: 900;
   /* background-color: #00030D; */
 }
 
@@ -122,11 +133,11 @@ canvas {
 }
 
 .stats {
-  width: 80%;
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  width: 80%;
   margin: 0%;
   border-radius: 5rem;
 }
@@ -140,38 +151,11 @@ canvas {
   height: 100%;
 }
 
-#Map {
-  /* margin: 1rem;  */
-  /* background-color: #2F4C73;
-  opacity: 0.1; */
-  border-radius: 2rem;
-  /* background-color: #C3C5F5; */
-  height: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 2rem;
-
-}
-
 #MapVis {
   height: 100%;
-  width: 50%;
+  width: 100%;
 }
 
-h1 {
-  margin: 0%;
-  margin-bottom: 2rem ;
-  margin-top: 3rem; 
-  /* background: rgb(250,10,176);
-  background: linear-gradient(90deg, rgba(250,10,176,1) 0%, rgba(189,135,16,1) 56%, rgba(255,179,0,1) 100%);
-  background-clip: border-box;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  color:white;
-  text-align: center; 
-  font-size: 6rem;
-}
 #bigNb{
   display: flex;
   flex-direction: column;
@@ -216,7 +200,15 @@ p {
 #tbM {
   margin: 0%;
   text-align: center;
-  height: 15rem;
+  border: .2rem solid #323159; 
+  border-radius: 1rem;
+  padding: 1rem;
+
+}
+
+#percent {
+  margin: 0%;
+  text-align: center;
   border: .2rem solid #323159; 
   border-radius: 1rem;
   padding: 1rem;
@@ -225,9 +217,7 @@ p {
 
 #tbNb {
   margin: 0%;
-  height: 15rem;
   text-align: center;
-  background-color: #323159;
   border: .2rem solid #323159; 
   border-radius: 1rem;
   padding: 1rem;
@@ -304,7 +294,7 @@ span:hover {
 }
 
 div.tooltip-donut {
-  position: absolute;
+  position: fixed;
   text-align: left;
   padding: .5rem;
   background: #00030D;
@@ -312,6 +302,7 @@ div.tooltip-donut {
   border-radius: 10px;
   pointer-events: none;
   font-size: 1rem;
+  z-index: 2;
 }
 
 #audio-player {
@@ -360,3 +351,114 @@ div.tooltip-donut {
 		color: #ff9b85;
 	
 } }   */
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+h1 {
+  text-align: center;
+  font-weight: 300;
+  color: #777
+}
+
+h1 span {
+  font-weight: 600;
+}
+
+.container {
+  z-index: 1;
+  width: 100%;
+  padding: 3rem 0;
+  /* margin: 50px auto; */
+  position: relative;
+  overflow: hidden;
+}
+
+.container:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -1px;
+  width: 2px;
+  height: 100%;
+  background: #CCD1D9;
+  z-index: 1
+}
+
+.timeline-block {
+  width: -webkit-calc(50% + 8px);
+  width: -moz-calc(50% + 8px);
+  width: calc(50% + 8px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  justify-content: space-between;
+  clear: both;
+}
+
+.timeline-block-right {
+  float: right;
+}
+
+.timeline-block-left {
+  float: left;
+  direction: rtl
+}
+
+.marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #F5F7FA;
+  background: #4FC1E9;
+  margin-top: 10px;
+  z-index: 9999
+}
+
+.timeline-content {
+  width: 95%;
+  padding: 0 15px;
+  color: #666
+}
+
+.timeline-content h3 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 25px;
+  font-weight: 500
+}
+
+.timeline-content span {
+  font-size: 15px;
+  color: #a4a4a4;
+}
+
+.timeline-content p {
+  font-size: 14px;
+  line-height: 1.5em;
+  word-spacing: 1px;
+  color: #888;
+}	
+
+
+@media screen and (max-width: 768px) {
+  .container:before {
+     left: 8px;
+     width: 2px;
+  }
+  .timeline-block {
+     width: 100%;
+     margin-bottom: 30px;
+  }
+  .timeline-block-right {
+     float: none;
+  }
+
+  .timeline-block-left {
+     float: none;
+     direction: ltr;
+  }
+}
