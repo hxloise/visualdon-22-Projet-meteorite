@@ -35,7 +35,7 @@
             <button type="button" class="player-control player-control-small" id="player-control-previous">
                 <span class="material-icons">skip_previous</span>
             </button>
-            <audio id="audio-player" controls>
+            <audio id="audio-player" controls autoplay>
                 <source src="./music/DanielPowter-BadDay.mp3" type="audio/mpeg">
             </audio>
 
@@ -74,22 +74,23 @@
 
     <!-- Milieu de page, contenant les météorites -->
     <section id="meteorites" style="background-image: url('./img/sunrise2.jpg');">
-        <canvas ></canvas>
+        <canvas>
+        </canvas>
     </section>
-
-    <div id="txtStat">
-        <div id="totalNb">
-        </div>
-        <div id="totalMasse">
-            <p id="tbM"></p>
-        </div>
-        <div id="totalMasse">
-            <p id="tbM"></p>
-        </div>
-    </div>
+  
     <!-- Bas de page, contenant les affichages de données -->
     <div class=stats>
-        
+        <div id="bigNb"> <h1>Titre</h1><p id="accroche">L'extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914)</p></div>
+        <div id="txtStat">
+            <div id="totalNb">
+            </div>
+            <div id="totalMasse">
+            </div>
+            <div id="totalMasse">
+                <p id="tbM"></p>
+            </div>
+        </div>
+
         <section id="Map">
         </section>
 

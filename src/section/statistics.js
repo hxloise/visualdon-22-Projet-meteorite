@@ -81,6 +81,7 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
     }
 
     //add text of bottom section
+    // d3.select('#bigNb').append('h1').text(nbM)
     d3.select("#totalNb")
         .append('p').attr("id", "tbNb").text("Total of meteorites | " + nbM)
 
@@ -287,13 +288,17 @@ export function getDonut(data, yearChosen) {
 export function getMap(allMet, yearChosen) {
     //add description of the section in html part
     d3.select('#Map')
-        .append('p')
-        .attr('id', "Titlel")
+        .append('h1')
         .text('Meteorite location')
-
+    
+    // d3.select('#Map')
+    //     .append('p')
+    //     .attr('id', "Titlel")
+    //     .text('Meteorite location')
+         
     //define margin
-    const width = 400
-    const height = 300
+    const width = document.getElementById('Map').offsetWidth/2
+    const height = 400
     //const margin = {top:20, right:20, bottom:30, left:50}
 
     //add container for svg
@@ -338,7 +343,7 @@ export function getMap(allMet, yearChosen) {
         //lat and long of the projection
         .center([0, 0])
         //size of the projection
-        .scale(70)
+        .scale(100)
         //center
         .translate([width / 2, height / 2])
 
