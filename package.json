@@ -13,6 +13,7 @@
     "d3": "^7.3.0",
     "normalize.css": "^8.0.1",
     "play-sound": "^1.1.5",
+    "regenerator-runtime": "^0.13.9",
     "sounds-webpack-plugin": "^0.0.2"
   },
   "devDependencies": {

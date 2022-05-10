@@ -23,7 +23,7 @@ const audioPlayer = document.querySelector('#audio-player')
 // tab for music
 let songOfTheYear = []
 
-function playSong(year) {
+function playSong(year, callbackWhenReady = () => 0) {
     
     label.value = year
     // Get music of the year 
@@ -33,6 +33,11 @@ function playSong(year) {
     playerSongTitle.innerText = songOfTheYear[0].song
     playerArtistName.innerText = songOfTheYear[0].artist
 
+    // const audio = new Audio();
+    audioPlayer.addEventListener('loadedmetadata', (evt) =>{
+        callbackWhenReady(audioPlayer.duration);
+    });
+    // audio.src = url + songOfTheYear[0].url;
     //replace song url in the HTML dataset
     audioPlayer.src = url + songOfTheYear[0].url
 
