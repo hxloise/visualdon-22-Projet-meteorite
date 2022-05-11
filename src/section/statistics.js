@@ -157,9 +157,9 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
             .attr("y", d => y(d.Type))
             .attr("width", d => x(d.MassT))
             .attr("height", y.bandwidth())
-            .attr("fill", "#323159"),
+            .attr("fill", "#FF00FF"),
             update => update
-                .attr("fill", "#323159"),
+                .attr("fill", "#FF00FF"),
             exit => exit
                 .remove()
         ).on("mouseover", function (d, i) {
@@ -245,7 +245,7 @@ export function getDonut(data, yearChosen) {
 
     //scale color
     const color = d3.scaleOrdinal()
-        .range(["#323159", "orange", "darblue"])
+        .range(["#FF00FF",  "#01FF29","white"])
     // color maybe used : 69b3a2 D93D04
 
     //array of data return array of objects contains details about each arc angle
@@ -319,7 +319,7 @@ export function getDonut(data, yearChosen) {
 
     //scale color
     const color2 = d3.scaleOrdinal()
-        .range(["#323159", "orange", "darblue"])
+        .range(["#FF00FF",  "#01FF29","white"])
     // color maybe used : 69b3a2 D93D04
 
     //return an array where elements are the key/value of object in argument
@@ -462,7 +462,7 @@ export function getMap(allMet, yearChosen) {
             .join("path")
             .attr("d", path.projection(projection))
             .attr("id", function (d) { return d.properties.name; })
-            .attr("fill", "#323159")
+            .attr("fill", "#FF00FF")
             .style("opacity", .5)
 
 
@@ -477,8 +477,8 @@ export function getMap(allMet, yearChosen) {
             .attr("cy", d => projection([d.long, d.lat])[1])
             .attr("r", 3)
             .attr("class", "circle")
-            .style("fill", "purple")
-            .attr("stroke", "orange")
+            .style("fill", "#FF00FF")
+            .attr("stroke", "#01FF29")
             .attr("stroke-width", 3)
             .attr("fill-opacity", .4)
             .on("mouseover", function (d, i) {
