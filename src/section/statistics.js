@@ -157,7 +157,7 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
             .attr("y", d => y(d.Type))
             .attr("width", d => x(d.MassT))
             .attr("height", y.bandwidth())
-            .attr("fill", "#FF00FF"),
+            .attr("fill", "#FF00FF"), //#FFF900 pour le météorites Stony :*
             update => update
                 .attr("fill", "#FF00FF"),
             exit => exit
