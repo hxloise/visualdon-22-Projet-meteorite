@@ -66,12 +66,10 @@ body {
   display: flex;
   justify-content: space-between;
   position: fixed;
-  margin-top: .2rem;
-  border-radius: 2rem;
+  border-radius: 0rem 0rem 2rem 2rem;
   background-color: rgba(0, 0, 0, 0.6);
   /* Just put a big one random number */
   z-index: 900;
-  /* background-color: #00030D; */
 }
 
 .year {
@@ -166,7 +164,10 @@ canvas {
 #accroche{
   width: 60%;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  line-height: 1.8em;
+  opacity: 80%;
+  font-size: 1rem;
 }
 
 #graph-meteorite-numbers {
@@ -178,16 +179,16 @@ canvas {
   width: 10rem;
   height: 2.5rem;
   font-size: 1rem;
-  text-align: center;
+  text-align: left;
   padding: 0.4rem;
 }
 
 select {
   color: white;
-  border-radius: 1rem;
+  border-radius: .5rem;
   border-width: 0.1rem;
   background-color: #00030D;
-  border-color: white;
+  border-color: #323159;
 }
 
 p {
@@ -277,7 +278,7 @@ button {
 
 
 button:hover,
-span:hover {
+.material-icons:hover {
   color: black;
   background: white;
 }
@@ -354,9 +355,7 @@ div.tooltip-donut {
 
 /* ---------------------------------------------------------------------------------------------------------------- */
 h1 {
-  text-align: center;
-  font-weight: 300;
-  color: #777
+  font-size: 4rem;
 }
 
 h1 span {
@@ -366,10 +365,25 @@ h1 span {
 .container {
   z-index: 1;
   width: 100%;
-  padding: 3rem 0;
+  padding: 3rem 0rem;
+  margin-bottom: 3rem;
   /* margin: 50px auto; */
   position: relative;
   overflow: hidden;
+}
+/* #test{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+#donut-meteorite-recclass{
+  display: flex;
+  flex-direction: row;
+} */
+
+.left-align{
+  text-align: left;
+  color:red;
 }
 
 .container:before {
@@ -405,7 +419,7 @@ h1 span {
 
 .timeline-block-left {
   float: left;
-  direction: rtl
+  direction: rtl;
 }
 
 .marker {
@@ -413,7 +427,7 @@ h1 span {
   height: 16px;
   border-radius: 50%;
   border: 2px solid #F5F7FA;
-  background: #4FC1E9;
+  background: #323159;
   margin-top: 10px;
   z-index: 9999
 }

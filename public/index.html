@@ -13,15 +13,16 @@
 <body>
     <div class="wrapper">
         <div class="typing-demo">
-            This is a data visualisation website.
+            Hi, welcome to our data visualisation website about meteorites and pop music.
         </div>
     </div>
     <button class="custom-btn btn-3"><span>Let's go</span></button>
     <!-- Party two -->
     <div class="container hidden lineUp">
         <div class="title hidden lineUp">
-            <h1>What about meteorites that have fallen to earth ?</h1>
-            <p>In this vizualisation, you can see some informations about all the meteorites during a year. In addition, there's the most listened music of that year.</p>
+            <h1>Why meteorites and pop music ?</h1>
+            <p>Well, each year meteorites fall from the sky as fast as new pop hits go up the billboard chart. So why not learn about those meteorite while twerking on the best songs humanity can produce?</p>
+            <p class="disclaimer">(Disclaimer : this website features materials protected by the Fair Use guidelines of Section 107 of the Copyright Act. All rights reserved to the copyright owners. This website is for Reaserch and scholarship only)</p>
         </div>
         <button onclick="window.location.href = 'visualisation.html'" class="custom-btn btn-3 test hidden" ><span>Let's go</span></button>
     </div>
@@ -63,7 +64,7 @@
     .container{
         height: 100%;
         width: 100%;
-        margin-top: 12rem;
+        margin-top: 9rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -114,10 +115,10 @@
     }
 
     .typing-demo {
-        width: 37ch;
+        width: 77ch;
         /* stps découpe en n étapes l'animation */
         /* blink est une deuxième animation qui permet de faire le curseur */
-        animation: typing 3s steps(37), blink .5s ease infinite;
+        animation: typing 6s steps(77), blink .5s ease infinite;
         white-space: nowrap;
         overflow: hidden;
         border-right: 3px solid;
@@ -142,7 +143,7 @@
         margin: 20px;
         /* animation-delay: 10s; */
         opacity: 100%;
-        animation: visibility 4s;
+        animation: visibility 6s;
     }
 
     @keyframes visibility {
@@ -276,6 +277,10 @@
         color: white;
         font-family: 'Lato', sans-serif;
         font-size: 1.7rem;
+    }
+
+    .disclaimer{
+        font-size: 1rem;
     }
     /* lineup class and keyframes */
 .lineUp {

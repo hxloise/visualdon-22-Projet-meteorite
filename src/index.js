@@ -43,8 +43,9 @@ label.addEventListener('change', function () {
 
     // Await song duration before executing the rest
     playSong(yearChoose, duration => {
-        document.querySelector("#totalMasse").replaceChildren()
         document.querySelector("#totalNb").replaceChildren()
+        document.querySelector("#totalMasse").replaceChildren()
+        document.querySelector("#totalPercent").replaceChildren()
         svg.replaceChildren()
         //draw data 
         getGraph(getNbMet(), yearChoose, getMax(), getMatiere())
@@ -86,6 +87,7 @@ playerPrev.addEventListener('click', function () {
     playSong(yearChoose, duration => {
         document.querySelector("#totalMasse").replaceChildren()
         document.querySelector("#totalNb").replaceChildren()
+        document.querySelector("#totalPercent").replaceChildren()
         svg.replaceChildren()
         //draw data 
         getGraph(getNbMet(), yearChoose, getMax(), getMatiere())
@@ -126,6 +128,7 @@ playerNext.addEventListener('click', function () {
     playSong(yearChoose, duration => {
         document.querySelector("#totalMasse").replaceChildren()
         document.querySelector("#totalNb").replaceChildren()
+        document.querySelector("#totalPercent").replaceChildren()
         svg.replaceChildren()
         //draw data 
         getGraph(getNbMet(), yearChoose, getMax(), getMatiere())

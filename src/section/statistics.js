@@ -47,9 +47,13 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
     const MassMaxYear = cs + csi + ci
 
     // set the dimensions and margins of the graph
+    // const margin = { top: 20, right: 30, bottom: 40, left: 90 },
+    //     width = 350 - margin.left - margin.right,
+    //     height = 300 - margin.top - margin.bottom;
     const margin = { top: 20, right: 30, bottom: 40, left: 90 },
-        width = 350 - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
+        //set the same width as map
+        width = document.getElementById('Map').offsetWidth,
+        height = 200;
 
     //add div to section statistic
     d3.select('#Statistics')
@@ -84,9 +88,9 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
 
     const percent = (compteurStony * 100 / nbM).toFixed(2)
     d3.select('#totalPercent').append('p').attr("id", "percent").text("Percent of Stony Meteorite").append('h2').text(percent + "%")
-    
-    
-    
+
+
+
     //add svg in div
     const svg = d3.select("#graph-meteorite-numbers")
         .append("svg")
@@ -97,10 +101,12 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
 
     //value for right axis x
     let xMax = obj.max
+    console.log(xMax)
     let x = d3.scalePow()
-        .domain([0, xMax])
+        .domain([0, xMax + 1000000])
         .range([0, width + 100])
-        .nice()
+    // .nice()
+
     //define axis x format
     let x_axis = d3.axisBottom(x).ticks(4)
         .tickFormat(d3.format(".1s"))
@@ -151,9 +157,9 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
             .attr("y", d => y(d.Type))
             .attr("width", d => x(d.MassT))
             .attr("height", y.bandwidth())
-            .attr("fill", "purple"),
+            .attr("fill", "#323159"),
             update => update
-                .attr("fill", "purple"),
+                .attr("fill", "#323159"),
             exit => exit
                 .remove()
         ).on("mouseover", function (d, i) {
@@ -197,7 +203,25 @@ export function getDonut(data, yearChosen) {
         fall: data_fall.length,
         found: data_found.length
     }
-
+    //set and get percent value for fEll and found m
+    let percent
+    if (data_fall_found.fall > data_fall_found.found) {
+        percent = data_fall_found.fall * 100 / data_filter.length
+    } else { percent = data_fall_found.found*100/data_filter.length}
+    
+    //get valid nameType meteorite
+    const data_valid = data_filter.filter(m => m.nametype == "Valid")
+    //stock valid and relict nameType meteorite
+    const data_valid_relict = {
+        valid: data_valid.length,
+        relict: data_filter.length - data_valid.length
+    }
+    //get and set value for nameType percent meteorite
+    let percentVR 
+    if(data_valid_relict.valid > data_valid_relict.relict){
+        percentVR = data_valid_relict.valid*100/data_filter.length
+    }else{percentVR = data_valid_relict.relict*100/data_filter.length}
+    console.log(percentVR)
     //set the dimension and margin of the graph
     const width = 250
     const height = 250
@@ -221,7 +245,7 @@ export function getDonut(data, yearChosen) {
 
     //scale color
     const color = d3.scaleOrdinal()
-        .range(["purple", "orange", "darblue"])
+        .range(["#323159", "orange", "darblue"])
     // color maybe used : 69b3a2 D93D04
 
     //array of data return array of objects contains details about each arc angle
@@ -257,7 +281,7 @@ export function getDonut(data, yearChosen) {
             Desc.transition()
                 .duration('50')
                 .style("opacity", 1);
-            
+
             let txt = i.value
             Desc.html(txt)
                 .style("left", (d.clientX + 10) + "px")
@@ -274,6 +298,77 @@ export function getDonut(data, yearChosen) {
                 .style("opacity", 0)
         })
 
+    svg.append("text")
+        .attr("text-anchor", "middle")
+        .text(percent.toFixed(1) + "%")
+        .attr("dy", ".35em")
+        .attr("font-size", '2em')
+        .attr("fill", "white")
+    //---------------------------------------------------------------------------------------------------------
+
+
+    //-------------------------------------------------------------------------------------------------------
+
+    //add svg in div
+    const svg2 = d3.select("#donut-meteorite-recclass")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", `translate(${width / 2},${height / 2})`);
+
+    //scale color
+    const color2 = d3.scaleOrdinal()
+        .range(["#323159", "orange", "darblue"])
+    // color maybe used : 69b3a2 D93D04
+
+    //return an array where elements are the key/value of object in argument
+    const data_ready2 = pie(Object.entries(data_valid_relict))
+
+    //draw in svg
+    svg2.selectAll('whatever')
+        .data(data_ready2)
+        .enter()
+        .append('path')
+        //arc generator function, based on the difference between the start angle and the end angle
+        .attr('d', d3.arc()
+            .innerRadius(60)
+            .outerRadius(radius)
+        )
+        .attr('fill', d => color2(d.data[0]))
+        .style("opacity", 1)
+        .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .style("opacity", 0.5);
+
+            Desc.transition()
+                .duration('50')
+                .style("opacity", 1);
+
+            let txt = i.value
+            Desc.html(txt)
+                .style("left", (d.clientX + 10) + "px")
+                .style("top", (d.clientY - 15) + "px");
+
+        })
+        .on("mouseleave", function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .style("opacity", 1);
+
+            Desc.transition()
+                .duration('50')
+                .style("opacity", 0)
+        })
+    svg2.append("text")
+        .attr("text-anchor", "middle")
+        .text(percentVR.toFixed(1) + "%")
+        .attr("dy", ".35em")
+        .attr("font-size", '2em')
+        .attr("fill", "white")
+    
+
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -283,9 +378,9 @@ export function getMap(allMet, yearChosen) {
     //     .append('p')
     //     .attr('id', "Titlel")
     //     .text('Meteorite location')
-         
+
     //define margin
-    const width = document.getElementById('Map').offsetWidth    
+    const width = document.getElementById('Map').offsetWidth
     const height = 400
     //const margin = {top:20, right:20, bottom:30, left:50}
 
@@ -367,8 +462,9 @@ export function getMap(allMet, yearChosen) {
             .join("path")
             .attr("d", path.projection(projection))
             .attr("id", function (d) { return d.properties.name; })
-            .attr("fill", "purple")
-            .style("opacity", .6)
+            .attr("fill", "#323159")
+            .style("opacity", .5)
+
 
         // select the tooltip
         const Desc = d3.select(".tooltip-donut")
