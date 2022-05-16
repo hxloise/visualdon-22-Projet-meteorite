@@ -1,8 +1,9 @@
 import * as d3 from 'd3'
+import { easeLinear } from 'd3'
 import { filter } from 'd3'
 
 export function getGraph(fallenData, yearChosen, maxM, data) {
-    //data need to be  sort
+    //data need to be sort
     const nbM = data.filter(m => m.year == yearChosen).length
     let data_filter = data.filter(m => m.year == yearChosen)
 
@@ -46,10 +47,6 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
     //get total of mass for a  year
     const MassMaxYear = cs + csi + ci
 
-    // set the dimensions and margins of the graph
-    // const margin = { top: 20, right: 30, bottom: 40, left: 90 },
-    //     width = 350 - margin.left - margin.right,
-    //     height = 300 - margin.top - margin.bottom;
     const margin = { top: 20, right: 30, bottom: 40, left: 90 },
         //set the same width as map
         width = document.getElementById('Map').offsetWidth,
@@ -63,11 +60,15 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
         .attr("height", height + margin.top + margin.bottom)
 
     let obj = totMass()
+
     function totMass() {
         let total = 0
         let max = 0
+        console.log(data)
         data.forEach(e => {
-            total = total + e.mass
+            if(e.year == yearChosen){
+                total = total + e.mass
+            }
             if (e.mass > max) {
                 max = e.mass
             }
@@ -82,14 +83,11 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
     d3.select("#totalNb")
         .append('p').attr("id", "tbNb").text("Total of meteorites").append('h2').text(nbM)
 
-    const totM = totMass()
     d3.select("#totalMasse")
         .append('p').attr("id", "tbM").text("Total Mass [g]").append('h2').text(MassMaxYear.toFixed(2))
 
     const percent = (compteurStony * 100 / nbM).toFixed(2)
     d3.select('#totalPercent').append('p').attr("id", "percent").text("Percent of Stony Meteorite").append('h2').text(percent + "%")
-
-
 
     //add svg in div
     const svg = d3.select("#graph-meteorite-numbers")
@@ -102,13 +100,16 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
     //value for right axis x
     let xMax = obj.max
     console.log(xMax)
-    let x = d3.scalePow()
-        .domain([0, xMax + 1000000])
-        .range([0, width + 100])
+
+    let x = d3.scaleLinear()
+        // .domain([0, xMax + 1000000])
+        .domain([0, 6500000])
+        // .range([0, width])
+        .range([0, width])
     // .nice()
 
     //define axis x format
-    let x_axis = d3.axisBottom(x).ticks(4)
+    let x_axis = d3.axisBottom(x).ticks(6)
         .tickFormat(d3.format(".1s"))
     //add X axis
     svg.append("g")
@@ -138,16 +139,16 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
     svg.append("g")
         .call(d3.axisLeft(y))
 
-    //color scale, not usefull
-    let color = d3.scaleLinear()
-        .domain([0, 2])
-        .range(["red", "white", "green"]);
-
     //add tooltip
     let Desc = d3.select("body").append("div")
         .attr("class", "tooltip-donut")
         .style("opacity", 0);
 
+    //param transition
+    let t = d3.transition()
+        .duration(1000)
+        .ease(easeLinear)
+    
     //Bars
     svg.selectAll("myRect")
         .data(data_ready)
@@ -155,9 +156,9 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
             .append("rect")
             .attr("x", x(0))
             .attr("y", d => y(d.Type))
-            .attr("width", d => x(d.MassT))
+            .attr("width", 0)
             .attr("height", y.bandwidth())
-            .attr("fill", "#FF00FF"), //#FFF900 pour le météorites Stony :*
+            .attr("fill", "#FF00FF"), //#FFF900 for Stony Meteorites :*
             update => update
                 .attr("fill", "#FF00FF"),
             exit => exit
@@ -172,7 +173,6 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
                 .style("opacity", 1);
 
             let txt = "Total Mass [g]: " + i.MassT.toFixed(0) + "<br>" + "Number of meteorite: " + i.Nb
-            console.log(i)
             Desc.html(txt)
                 .style("left", (d.clientX + 10) + "px")
                 .style("top", (d.clientY - 15) + "px");
@@ -187,6 +187,9 @@ export function getGraph(fallenData, yearChosen, maxM, data) {
                 .duration('50')
                 .style("opacity", 0)
         })
+        .transition(t)
+        .attr("width", d => x(d.MassT))
+
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -273,7 +276,6 @@ export function getDonut(data, yearChosen) {
         .attr('fill', d => color(d.data[0]))
         .style("opacity", 1)
         .on('mouseover', function (d, i) {
-            console.log("test", d.clientX)
             d3.select(this).transition()
                 .duration('50')
                 .style("opacity", 0.5);
@@ -297,7 +299,7 @@ export function getDonut(data, yearChosen) {
                 .duration('50')
                 .style("opacity", 0)
         })
-
+    //add description of Stony meteorite mass percent
     svg.append("text")
         .attr("text-anchor", "middle")
         .text(percent.toFixed(1) + "%")
@@ -361,6 +363,7 @@ export function getDonut(data, yearChosen) {
                 .duration('50')
                 .style("opacity", 0)
         })
+
     svg2.append("text")
         .attr("text-anchor", "middle")
         .text(percentVR.toFixed(1) + "%")
@@ -374,11 +377,6 @@ export function getDonut(data, yearChosen) {
 //--------------------------------------------------------------------------------------------------------
 
 export function getMap(allMet, yearChosen) {
-    // d3.select('#Map')
-    //     .append('p')
-    //     .attr('id', "Titlel")
-    //     .text('Meteorite location')
-
     //define margin
     const width = document.getElementById('Map').offsetWidth
     const height = 400
@@ -422,7 +420,6 @@ export function getMap(allMet, yearChosen) {
 
     //set projection
     let projection = d3.geoMercator()
-        //let projection = d3.geoOrthographic()
         //lat and long of the projection
         .center([0, 0])
         //size of the projection
@@ -453,6 +450,11 @@ export function getMap(allMet, yearChosen) {
         }
     });
 
+    //transition param
+    let t = d3.transition()
+        .duration(1000)
+        .ease(easeLinear)
+
     //Draw map, data format Geojson
     d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then(function (d) {
         svg.append('g')
@@ -475,11 +477,11 @@ export function getMap(allMet, yearChosen) {
             .join("circle")
             .attr("cx", d => projection([d.long, d.lat])[0])
             .attr("cy", d => projection([d.long, d.lat])[1])
-            .attr("r", 3)
+            .attr("r", 0)
             .attr("class", "circle")
             .style("fill", "#FF00FF")
             .attr("stroke", "#01FF29")
-            .attr("stroke-width", 3)
+            .attr("stroke-width", 1)
             .attr("fill-opacity", .4)
             .on("mouseover", function (d, i) {
                 d3.select(this).transition()
@@ -505,9 +507,13 @@ export function getMap(allMet, yearChosen) {
                     .duration('50')
                     .style("opacity", 0)
             })
+            .transition(t)
+            .attr("r", 3.4)
+              
     })
 
-    //function get long and lat
+
+    //function get long and lat, totally useless ;) 
     function GetPos(geoLocation) {
 
         let end = geoLocation.length - 2

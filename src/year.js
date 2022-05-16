@@ -40,6 +40,7 @@ export function getNbMet(getCompteur = false) {
         }
     })
 
+    //initiate counter for each year
     let compteur2006 = 0
     let compteur2007 = 0
     let compteur2008 = 0
@@ -48,6 +49,7 @@ export function getNbMet(getCompteur = false) {
     let compteur2011 = 0
     let compteur2012 = 0
 
+    //get number
     let meteoriteData = {}
     meteorites.forEach(meteorite => { 
         const year = meteorite.year
@@ -77,6 +79,7 @@ export function getNbMet(getCompteur = false) {
 
     });
 
+    //get number in tab
     meteoriteData["2006"] = compteur2006
     meteoriteData["2007"] = compteur2007
     meteoriteData["2008"] = compteur2008
@@ -115,18 +118,15 @@ const CLASSES_TO_KEEP = ['A', 'L', 'C', 'E', 'B', 'D', 'F', 'H', 'K', 'O', 'R', 
 
 let stonyMeteorites = dataFinal.filter(e=> CLASSES_TO_KEEP.includes(e.recclass[0]) || e.recclass.includes('Martian') && !e.recclass.includes('Relict iron'));
 stonyMeteorites.forEach(e=>e.Type=typeStony);
-// console.log("stony",stonyMeteorites);
 
 
 //-----------------Stony-iron meteorites----------------------------------------
 let stonyIronMeteorites = dataFinal.filter(e=>e.recclass.includes('Pallasite') || e.recclass.includes('Mesosiderite'));
 stonyIronMeteorites.forEach(e=>e.Type=typeStonyIron);
-// console.log("StonyIronMeteorites",stonyIronMeteorites);
 
 
 //data classified
 let dataClassified = [...stonyMeteorites,...stonyIronMeteorites,...ironMeteorites];
-//console.log("final",dataClassified);
 
 // const COLOR = Object.freeze({
 //     Iron      : '#2171b5',

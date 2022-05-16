@@ -9,6 +9,7 @@ import Imgs from "./class/Imgs.js";
 import './css/index.css';
 import 'regenerator-runtime/runtime';
 
+//get html element
 const label = document.getElementById('year-select')
 const svg = document.getElementById('Statistics')
 const svgDonut = document.getElementById('StatisticsDonut')
@@ -17,7 +18,7 @@ const playerPlay = document.querySelector('#audio-player')
 const playerPrev = document.querySelector('#player-control-previous')
 const playerNext = document.querySelector('#player-control-next')
 
-//year chosen by user 
+//get year chosen by user 
 let yearChoose = getYear()
 
 //get music infos default year
@@ -36,26 +37,32 @@ getMap(allMeteorites, yearChoose)
 const dataClassified = getMatiere()
 let MaterialByYear = dataClassified.filter(type => type.year == yearChoose)
 
-
+//Label event listener
 label.addEventListener('change', function () {
 
     yearChoose = getYear()
 
     // Await song duration before executing the rest
     playSong(yearChoose, duration => {
+
+        //just an unclean way to clean html content
         document.querySelector("#totalNb").replaceChildren()
         document.querySelector("#totalMasse").replaceChildren()
         document.querySelector("#totalPercent").replaceChildren()
+        
+        //clean graph
         svg.replaceChildren()
-        //draw data 
+        //draw chart band  
         getGraph(getNbMet(), yearChoose, getMax(), getMatiere())
 
-        //draw donut
+        //clean graph
         svgDonut.replaceChildren()
+        //draw donut
         getDonut(getMatiere(), yearChoose)
 
-        //draw map
+        //clean graph
         svgMap.replaceChildren()
+        //draw map
         getMap(allMeteorites, yearChoose)
 
         // clear interval and canevas on change
@@ -80,6 +87,7 @@ label.addEventListener('change', function () {
     })
 })
 
+//Previous song event listener
 playerPrev.addEventListener('click', function () {
     yearChoose = getYear()
 
@@ -121,14 +129,18 @@ playerPrev.addEventListener('click', function () {
     })
 })
 
+//Next song event listener
 playerNext.addEventListener('click', function () {
     yearChoose = getYear()
 
     // Await song duration before executing the rest
     playSong(yearChoose, duration => {
+        //one solution to clean html content
         document.querySelector("#totalMasse").replaceChildren()
         document.querySelector("#totalNb").replaceChildren()
         document.querySelector("#totalPercent").replaceChildren()
+
+        //clean graph
         svg.replaceChildren()
         //draw data 
         getGraph(getNbMet(), yearChoose, getMax(), getMatiere())
@@ -141,12 +153,12 @@ playerNext.addEventListener('click', function () {
         svgMap.replaceChildren()
         getMap(allMeteorites, yearChoose)
 
-        // clear interval and canevas on change
+        //clear interval and canevas on change
         clearInterval(imageSpawner)
         ctx.canvas.height = ctx.canvas.clientHeight
         ctx.canvas.width = ctx.canvas.clientWidth
 
-        // clear Imgs tab and reset counter interval and nbImgs
+        //clear Imgs tab and reset counter interval and nbImgs
         cmpt = 0;
         nbImgsEachYear = getNbMet(true)
         nbImgs = nbImgsEachYear[yearChoose]
@@ -161,7 +173,7 @@ playerNext.addEventListener('click', function () {
     })
 })
 
-//PARALLAX-------------------------------------------------------------------------------------------------
+//------------------------------------PARALLAX-------------------------------------------------------------
 
 const ctx = document.querySelector('canvas').getContext('2d');
 

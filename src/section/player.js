@@ -113,11 +113,11 @@ audioPlayer.addEventListener('click', () => {
 //Event listener
 //-------------------------------------------------------------------
 
-// Bouton précédent
+// Button previous
 playerPrev.addEventListener('click', playPreviousSong)
 
 
-// Bouton suivant
+// Button next
 playerNext.addEventListener('click', playNextSong)
 
 
